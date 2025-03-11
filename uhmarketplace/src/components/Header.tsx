@@ -31,27 +31,31 @@ const Header = async (props: props) => {
       className="text-white sticky top-0 w-full z-50"
     >
       <div className="container mx-auto py-4 flex justify-between items-center px-8">
-        <Link href={'/'}>
-            <Image
-            src={uhLogo}
-            alt="Logo"
-            width={70}
-            height={70}
-            className="h-10 w-auto md:h-12 hidden md:block"
-            />
-        </Link>
+          
+        <div className="flex items-center space-x-8 pl-6">
+          <Link href={'/'}>
+              <Image
+              src={uhLogo}
+              alt="Logo"
+              width={70}
+              height={70}
+              className="h-10 w-auto md:h-14 hidden md:block"
+              />
+          </Link>
 
 
-        <div className="flex flex-col items-center justify-center">
-          <h1 className="text-center text-xl md:text-3xl lg:text-5xl font-bold drop-shadow-xl">
-            COOGBAY
-          </h1>
-          <h2 className="text-center text-sm md:text-lg lg:text-xl font-bold drop-shadow-xl">
-            FOR COUGARS, BY COUGARS
-          </h2>
+          <div className="flex flex-col items-start justify-center">
+            <h1 className="text-center text-xl md:text-3xl lg:text-[2.35rem] font-bold drop-shadow-xl">
+              COOGBAY
+            </h1>
+            <h2 className="text-center text-sm md:text-lg lg:text-xl drop-shadow-xl">
+              FOR COUGARS, BY COUGARS
+            </h2>
+          </div>
         </div>
+        
 
-        <nav className="flex gap-2">
+        <nav className="flex gap-2 pr-4">
           {props.session ? (
             <a
               href="/api/auth/signout"
