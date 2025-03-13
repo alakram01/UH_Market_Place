@@ -101,26 +101,6 @@ export default async function Dashboard() {
                             </p>
                         )}
                     </div>
-                      {/* {userPosts.map((post) => (
-                        <li
-                          key={post.id}
-                          className="bg-white shadow overflow-hidden rounded-lg mt-2"
-                        >
-                          <div className="px-4 py-5 sm:p-6">
-                            <h4 className="text-lg font-medium">{post.title}</h4>
-                            <p className="text-gray-600">{post.authorEmail}</p>
-                            <div className="mt-4">
-                              <button className="px-4 py-2 bg-yellow-500 text-white rounded mr-2">
-                                Edit
-                              </button>
-                              <button className="px-4 py-2 bg-red-500 text-white rounded" onClick={() => deletePost(post.id)}>
-                                Delete
-                              </button>
-                            </div>
-                          </div>
-                        </li>
-                      ))} */}
-                    {/* </ul> */}
                   </div>
                 </div>
               ) : (
