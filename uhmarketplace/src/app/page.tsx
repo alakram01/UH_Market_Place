@@ -18,9 +18,9 @@ export default async function Home() {
   ];
 
   const captions = [
-    "Beautiful Landscape 1",
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Non cum impedit dolorem necessitatibus labore! Dolorum voluptas nemo magni! Laborum, voluptas!",
-    "Majestic Mountain 3",
+    "Meet up with fellow students",
+    "Find a community by joining clubs",
+    "Explore campus",
   ];
 
   return (
@@ -55,28 +55,29 @@ export default async function Home() {
 
       <div className="flex gap-6 my-8 flex-col justify-center items-center">
       <AboutSquare
-      title="WE ARE ABOUT COMMUNITY"
+      title="A STUDENT'S MARKETPLACE"
       imageSrc="landing-images/UH-Photo-4.jpg"
       imageAlt="UH Community Photo"
-      content="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum unde cum enim nostrum nam facilis tempore! Maiores, magni nihil! Accusantium molestias fugiat dicta vitae aut at laboriosam sequi fuga necessitatibus."
+      content="(Explore the marketplace website section: picture of setting up an item for others to sell)"
        />
       </div>
       <hr className="mx-10"/>
 
       <AboutSquare
-      title="WE ARE ABOUT COMMUNITY"
+      title="NEED HELP WITH YOUR CLASSES?"
       imageSrc="landing-images/UH-Photo-4.jpg"
       imageAlt="UH Community Photo"
-      content="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum unde cum enim nostrum nam facilis tempore! Maiores, magni nihil! Accusantium molestias fugiat dicta vitae aut at laboriosam sequi fuga necessitatibus."
+      content="(Stuck on hw or worried about exams? Don't worry! We've organized every TA & Tutor's time availability
+      and meet up with them!: Picture of a tutor/TA helping a student)"
         />
 
       <hr className="mx-10"/>
 
       <AboutSquare
-      title="WE ARE ABOUT COMMUNITY"
+      title="JOIN A CLUB TODAY"
       imageSrc="landing-images/UH-Photo-4.jpg"
       imageAlt="UH Community Photo"
-      content="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illum unde cum enim nostrum nam facilis tempore! Maiores, magni nihil! Accusantium molestias fugiat dicta vitae aut at laboriosam sequi fuga necessitatibus."
+      content="(Meet up with other students on campus by joining a club: picture of the different club's logos)"
        />
 
       <Footer></Footer>

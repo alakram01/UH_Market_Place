@@ -15,7 +15,7 @@ const LandingBanner = () => {
 
       {/* Title */}
       <h2 className="text-3xl sm:text-5xl font-bold absolute top-32 right-2 left-2 text-center">
-        THE PLACE TO BUY, SELL, MEET – ON CAMPUS
+        MARKETPLACE & TUTORING CENTER FOR STUDENTS
       </h2>
 
       {/* Horizontal Line */}
@@ -23,8 +23,8 @@ const LandingBanner = () => {
 
       {/* Description */}
       <p className="text-md sm:text-lg mt-2 absolute top-52 right-2 left-2 text-center font-semibold">
-        Here at CoogBay, you can sell, purchase, exchange products, seek services, 
-        and meet up with fellow students.
+        Here at CoogBay, you can sell, purchase, exchange products,
+        and find help by connecting with tutors!
       </p>
     </div>
   );
