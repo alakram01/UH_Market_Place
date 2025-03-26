@@ -1,0 +1,39 @@
+Creating a checkout session
+
+-> Need an endpoint that creates a checkout session.
+== Everytime a customer intends to pay, their is a new checkout session created with a new ID,if they were to cancel it, and intent to pay again
+they would have to a new checkout session ID
+
+Choosing a mode
+
+-> For one time apyment you need to use payment mode
+
+Supply success and cancel URLs
+
+-> Specify success and cancel pages.
+
+Redirect to checkout
+
+-> After creating the session, redirect your customer to the URL for the checkout Page.
+
+----------------------- CLIENT ---------------------------------------------
+
+ADD A SUCCESS PAGE
+
+-> Create pages for success and cancled orders
+
+
+------ We need to connect the STRIPE DASHABORD TO THE WEBSITE -------------------
+
+---------------------------------- HOW IT WORKS ------------------------------------------
+
+We have a route.ts file within checkout folder that creates a checkout session.
+
+The function to call that API is in another folder call components/buyButton
+-> Where if you click the button then it calls that route.ts file.
+
+Within the API call you have to pass in the price_ID and it looks into the stripe DASHABORD and retrieves that price. 
+
+You fill out a payment form and then click pay.
+
+Depending on the card, it will either fail or success and redirect you to the correct page.

@@ -13,34 +13,6 @@ import SellerCarousel from "@/components/sellerCarousel";
 // https://next-auth.js.org/getting-started/client
 // Test the middleware by navigating to the /dashboard route
 export default async function Marketplace() {
-  /*
-    const posts = await prisma.post.findMany();
-    return (
-      <div className="gap-2 grid grid-cols-2 sm:grid-cols-4">
-          {posts.map((post) => (
-            <Link href={`/marketplace/${post.id}`} key={post.id}>
-              <Card shadow="sm" key={post.id}>
-                <CardBody className="overflow-visible p-0">
-                  <Image
-                    shadow="sm"
-                    radius="lg"
-                    width="100%"
-                    alt={post.title}
-                    className="w-full object-cover h-[140px]"
-                    src={post.imageUrl || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFA-3SEkzvkpZZxyJoONE7BQSnv7ruH8vNZQ&s"}
-                  />
-                  <CardFooter className="text-small justify-between">
-                      <b>{post.title}</b>
-                      <p>Created by: {post.authorName}</p>
-                  </CardFooter>
-                </CardBody>
-              </Card>
-              <Spacer></Spacer>
-            </Link>
-          ))}
-        </div>
-    );
-    */
 
   const items = await prisma.post.findMany();
 
@@ -104,9 +76,6 @@ export default async function Marketplace() {
         <ItemCarousel
           items={items.map((item) => ({ ...item}))}
         />
-        {/* <h1 className="text-cougRed text-2xl underline decoration-4 underline-offset-8 p-4">
-          Top Sellers
-        </h1> */}
         <SellerCarousel
           sellers={listSellers.map((seller) => ({
             ...seller,
