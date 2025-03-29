@@ -37,3 +37,17 @@ Within the API call you have to pass in the price_ID and it looks into the strip
 You fill out a payment form and then click pay.
 
 Depending on the card, it will either fail or success and redirect you to the correct page.
+Depending on the card, it will either fail or success and redirect you to the correct page.
+
+---------------------------------- Creating Product ------------------------------------------
+
+I have the products to where if the use creates a product it gets stored in the database
+-> UH_Market_Place\uhmarketplace\src\app\(cb)\dashboard\page.tsx -> This is where the initial listing occurs for the user
+-> uhmarketplace\src\app\create_post\page.tsx -> This is where the user actually creates the listing 
+
+
+Problem is, it doesnt get stored in the stripe dashbaord, and thats where the payment processor will actually take place
+
+*** It seems like you can have it do CRUD operations within the same API call, it doesnt really need to have two different functions
+GOAL:::
+Be able to understand how to implement stripe within the application
