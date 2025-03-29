@@ -13,28 +13,61 @@ export async function DELETE(req: NextRequest) {
   const session = await getServerSession(options);
   const { id } = await req.json();
 
-  try{
+  console.log('Deleting product with ID:', id); // Log the ID
+
+  try {
     // Find the product in the database to get its Stripe Product ID
     const product = await prisma.post.findUnique({
-      where: {id},
+      where: { id },
     });
 
-    if (!product || !product.stripeProductId){
-      return NextResponse.json({message: "Product not found"}, {status: 400})
+    console.log('Product found in database:', product); // Log the product details
+
+    if (!product || !product.stripeProductId) {
+      console.error('Product not found or Stripe Product ID missing');
+      return NextResponse.json({ message: "Product not found" }, { status: 400 });
     }
 
-    // Delete the product from Stripe
+    // Step 1: Check for and delete associated prices from Stripe
+    const prices = await stripe.prices.list({
+      product: product.stripeProductId,
+    });
+
+    if (prices.data.length > 0) {
+      // If there are associated prices, archive them first
+      console.log('Archiving associated prices for product:', product.stripeProductId);
+      for (const price of prices.data) {
+        await stripe.prices.update(price.id, {
+          active: false, // Archive the price
+        });
+        console.log('Archived price with ID:', price.id);
+      }
+    } else {
+      console.log('No associated prices found for this product');
+    }
+
+    // Step 2: Attempt to delete the product from Stripe
+    console.log('Deleting product from Stripe with ID:', product.stripeProductId);
     await stripe.products.del(product.stripeProductId);
 
-    // Delete product from Database 
+    // Step 3: Delete the product from the database
+    console.log('Deleting product from database');
     await prisma.post.delete({
-      where: {id}
-    })
-  
+      where: { id }
+    });
 
-    return NextResponse.json({ message: 'Product deleted successfully'}, {status:200})
-  } catch (error) {
-    return NextResponse.json({message: 'Internal server error'}, {status: 500});
+    return NextResponse.json({ message: 'Product deleted successfully' }, { status: 200 });
+  } catch (error: unknown) {
+    console.error('Error during product deletion:', error); // Log any errors
+
+     // Error handling
+     if (error instanceof Error) {
+      // If error is an instance of Error, handle the message properly
+      return NextResponse.json({ message: `Error: ${error.message}` }, { status: 500 });
+    }
+
+    // Default error response if error is not an instance of Error
+    return NextResponse.json({ message: 'Internal server error' }, { status: 500 });
   }
 }
 

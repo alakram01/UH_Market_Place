@@ -49,5 +49,21 @@ I have the products to where if the use creates a product it gets stored in the 
 Problem is, it doesnt get stored in the stripe dashbaord, and thats where the payment processor will actually take place
 
 *** It seems like you can have it do CRUD operations within the same API call, it doesnt really need to have two different functions
-GOAL:::
+
+GOAL::: FINISHED
 Be able to understand how to implement stripe within the application
+
+
+WHAT I LEARNED
+-> You can do crud operations for both stripe and database within a function::: EX UH_Market_Place\uhmarketplace\src\app\api\listings\route.ts
+-> You can not delete products through the API, so the best option you have is to archive it, and once you do that, you would have 
+to run the list of products where products = "Active"
+
+What I need to do for next time
+-> I can delete products from the dashboard of stripe, but it will still be there in the database
+-> Everytime I load up the marketplace, it would have to compare all the products of the database and the stripe dashbaord, and see 
+if it matches, if one isnt matching then it will adjust accordingly 
+
+When it comes to deleting, it will delete from the database but it will archive in the stripe dashboard.
+
+Text Isreal about the frontend since the website is lacking front end, just have him do the home page since it will be the easiest
