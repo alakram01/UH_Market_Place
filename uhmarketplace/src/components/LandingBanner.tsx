@@ -14,7 +14,7 @@ const LandingBanner = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black pointer-events-none" />
 
       {/* Title */}
-      <h2 className="text-3xl sm:text-5xl font-bold absolute top-32 right-2 left-2 text-center">
+      <h2 className="font-league text-3xl sm:text-5xl font-bold absolute top-32 right-2 left-2 text-center">
         MARKETPLACE & TUTORING CENTER FOR STUDENTS
       </h2>
 
