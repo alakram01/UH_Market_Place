@@ -39,13 +39,13 @@ const Header = async (props: props) => {
               alt="Logo"
               width={70}
               height={70}
-              className="h-10 w-auto md:h-14 hidden md:block"
+              className="h-14 w-auto md:h-14 md:block"
               />
           </Link>
 
 
           <div className="flex flex-col items-start justify-center">
-            <h1 className="text-center text-xl md:text-3xl lg:text-[2.35rem] font-bold drop-shadow-xl">
+            <h1 className="text-center text-xl md:text-3xl sm:text-3xl lg:text-[2.35rem] font-bold drop-shadow-xl">
               COOGBAY
             </h1>
             <h2 className="text-center text-sm md:text-lg lg:text-xl drop-shadow-xl">

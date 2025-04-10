@@ -3,6 +3,7 @@ import { options } from "./api/auth/[...nextauth]/options";
 import { getServerSession } from "next-auth/next";
 import UserCard from "../components/UserCard";
 import ImageCarousel from "../components/Slider";
+import ImageCarousel2 from "../components/Slider2";
 import FeatureBox from "@/components/ui/FeatureBox";
 import Footer from "@/components/footer";
 import AboutSquare from "@/components/AboutSquare";
@@ -23,19 +24,20 @@ export default async function Home() {
     "Explore campus",
   ];
 
+  const captions2 = [
+    "1) Insert a photo of a product/service you would like to sell",
+    "2) Insert a price for you product/service",
+    "3) Post your item into the marketplace",
+  ]
+
   return (
     <div>
       <LandingBanner></LandingBanner>
-      <div className="flex-col sm:flex-row flex justify-around py-16 bg-white text-gray-700 z-1 px-8 gap-4">
+      <div className="grid grid-cols-4 py-16 px-16 bg-white text-gray-700 z-1 ml-16 mr-16 gap-8">
         <FeatureBox
           imageSrc="landing-images/box-icon.png"
           altText="Box Icon"
           description="Find products around campus from classmates"
-        />
-        <FeatureBox
-          imageSrc="landing-images/chat-icon.png"
-          altText="Chat Icon"
-          description="Chat with other students at the University of Houston"
         />
         <FeatureBox
           imageSrc="landing-images/services-cion.png"
@@ -43,9 +45,14 @@ export default async function Home() {
           description="Struggling with exams? Find tutors, and other services"
         />
         <FeatureBox
-          imageSrc="landing-images/money-icon.png"
-          altText="Dollar Icon"
-          description="Sell your products and services to get an extra buck"
+          imageSrc="landing-images/group-icon-24.jpg"
+          altText="Chat Icon"
+          description="Chat with other students at the University of Houston"
+        />
+        <FeatureBox
+          imageSrc="landing-images/group-icon-24.jpg"
+          altText="Chat Icon"
+          description="Chat with other students at the University of Houston"
         />
       </div>
 
@@ -59,26 +66,34 @@ export default async function Home() {
           A STUDENT'S MARKETPLACE</p>
         </div>
         <div className="grid grid-cols-3 gap-4 w-full max-w-6xl text-center text-lg">
-          <div className="col-span-1 flex flex-col gap-4 mt-2">
+          <div className="col-span-1 flex flex-col gap-2">
             <div className="grid grid-cols-12 gap-2">
-              <div className="col-span-7 bg-gray-200 p-4 rounded">
+              <div className="py-8 col-span-7 bg-gray-200 p-4 rounded">
                 <h2 className="font-bold mb-[10px]">SET UP to SELL!</h2>
                 <p>User-friendly marketplace website to sell products to other students.</p>
               </div>
-              <div className="col-span-5 bg-gray-200 p-4 rounded">
+              <div className="col-span-5 bg-gray-200 p-4 rounded flex items-center justify-center">
+                <img
+                  src="landing-images/og-shopping-cart.png"
+                  className="w-[8rem] h-[8rem] object-contain mx-auto drop-shadow-md"
+                />
               </div>
             </div>
             <div className="grid grid-cols-12 gap-2">
-              <div className="col-span-5 bg-gray-200 p-4 rounded">
+              <div className="col-span-5 bg-gray-200 p-4 rounded flex items-center justify-center">
+                <img
+                  src="landing-images/money-icon.png"
+                  className="w-[6rem] h-[6rem]"
+                />
               </div>
-              <div className="col-span-7 bg-gray-200 p-4 rounded">
+              <div className="py-8 col-span-7 bg-gray-200 p-4 rounded">
                 <h2 className="font-bold mb-[10px] text-nowrap">The PLACE to BUY</h2>
                 <p>Shop and exchange products & services with fellow students!</p>
               </div>
             </div>
           </div>
           <div className="ml-2 col-span-2 flex justify-center items-center">
-            <img src="landing-images/UH-Photo-4.jpg"></img>
+          <ImageCarousel2 images={images} captions = {captions2} />
           </div>
         </div>
       </div>
@@ -108,7 +123,11 @@ export default async function Home() {
                 <div className="grid grid-cols-2 gap-2">
                   <div className="bg-gray-200 p-4 rounded text-center">
                     <div className="h-32 flex items-center justify-center mb-2">
-                      <img className="w-20 h-20" src="landing-images/shaking-hands.png" />
+                      <img
+                        src="landing-images/business-handshake-on-transparent-background-free-png.webp"
+                        style={{ width: "6.8rem", height: "5.5rem" }}
+                        className="object-contain"
+                      />
                     </div>
                     <h2 className="font-bold mb-4">MEET UP WITH TUTORS</h2>
                     <p className="mb-10">
@@ -117,7 +136,7 @@ export default async function Home() {
                   </div>
                   <div className="bg-gray-200 p-4 rounded text-center">
                     <div className="h-32 flex items-center justify-center mb-2">
-                      <img className="w-16 h-16" src="landing-images/meeting-time.png" />
+                      <img className="w-20 h-20" src="landing-images\wall-clock-silhouette-image.png" />
                     </div>
                     <h2 className="font-bold mb-4">SET A TIME AND PLACE</h2>
                     <p className="mb-10">
