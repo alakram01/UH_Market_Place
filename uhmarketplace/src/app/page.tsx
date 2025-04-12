@@ -38,21 +38,25 @@ export default async function Home() {
         imageSrc="landing-images/box-icon.png"
         altText="Box Icon"
         description="Marketplace"
+        scrollToId="marketplace"
       />
       <FeatureBox
         imageSrc="landing-images/services-cion.png"
         altText="Tutoring Icon"
         description="Schedule Tutoring"
+        scrollToId="tutoring"
       />
       <FeatureBox
         imageSrc="landing-images/group-icon-24.jpg"
         altText="Chat Icon"
         description="Join a Club"
+        scrollToId="clubs"
       />
       <FeatureBox
         imageSrc="landing-images/info-icon.png"
         altText="Chat Icon"
         description="About"
+        scrollToId="about"
       />
       </div>
 
@@ -62,7 +66,7 @@ export default async function Home() {
 
       {/* Marketplace Section */}
       <div id="marketplace" className="flex flex-col items-center p-4 mb-10 mt-10">
-        <div data-aos="fade-down">
+        <div data-aos="fade-down" className="grid">
           <p className="text-3xl font-bold mb-4">
           A STUDENT'S MARKETPLACE</p>
         </div>
