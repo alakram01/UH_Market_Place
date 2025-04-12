@@ -26,41 +26,42 @@ export default async function Home() {
 
   const captions2 = [
     "1) Insert a photo of a product/service you would like to sell",
-    "2) Insert a price for you product/service",
-    "3) Post your item into the marketplace",
+    "2) Insert a name and price for you product/service",
+    "3) Post your listing into the marketplace",  
   ]
-
+  
   return (
     <div>
       <LandingBanner></LandingBanner>
-      <div className="grid grid-cols-4 py-16 px-16 bg-white text-gray-700 z-1 ml-16 mr-16 gap-8">
-        <FeatureBox
-          imageSrc="landing-images/box-icon.png"
-          altText="Box Icon"
-          description="Find products around campus from classmates"
-        />
-        <FeatureBox
-          imageSrc="landing-images/services-cion.png"
-          altText="Tutoring Icon"
-          description="Struggling with exams? Find tutors, and other services"
-        />
-        <FeatureBox
-          imageSrc="landing-images/group-icon-24.jpg"
-          altText="Chat Icon"
-          description="Chat with other students at the University of Houston"
-        />
-        <FeatureBox
-          imageSrc="landing-images/group-icon-24.jpg"
-          altText="Chat Icon"
-          description="Chat with other students at the University of Houston"
-        />
+      <div className="grid grid-cols-4 py-8 bg-white text-gray-700 z-1 ml-8 mr-8 gap-4">
+      <FeatureBox
+        imageSrc="landing-images/box-icon.png"
+        altText="Box Icon"
+        description="Marketplace"
+      />
+      <FeatureBox
+        imageSrc="landing-images/services-cion.png"
+        altText="Tutoring Icon"
+        description="Schedule Tutoring"
+      />
+      <FeatureBox
+        imageSrc="landing-images/group-icon-24.jpg"
+        altText="Chat Icon"
+        description="Join a Club"
+      />
+      <FeatureBox
+        imageSrc="landing-images/info-icon.png"
+        altText="Chat Icon"
+        description="About"
+      />
       </div>
 
       <main className="min-h-full flex items-center justify-center bg-gray-100 py-10">
         <ImageCarousel images={images} captions = {captions} />
       </main>
 
-      <div className="flex flex-col items-center p-4 mb-10 mt-10">
+      {/* Marketplace Section */}
+      <div id="marketplace" className="flex flex-col items-center p-4 mb-10 mt-10">
         <div data-aos="fade-down">
           <p className="text-3xl font-bold mb-4">
           A STUDENT'S MARKETPLACE</p>
@@ -98,7 +99,8 @@ export default async function Home() {
         </div>
       </div>
 
-      <div className="flex flex-col items-center p-4 mb-10">
+      {/* Tutoring Section */}
+      <div id="tutoring" className="flex flex-col items-center p-4 mb-10">
         <div className="flex">
           <div className="h-200 justify-center items-center">
             <p className="text-3xl font-bold m-4">
@@ -154,7 +156,8 @@ export default async function Home() {
         </div>
       </div>
 
-      <div className="flex flex-col items-center p-4 mb-10">
+      {/* Join a Club Section */}
+      <div id="clubs" className="flex flex-col items-center p-4 mb-10">
         <p className="text-3xl font-bold mb-4">
           JOIN A CLUB TODAY!
         </p>
