@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+import ScrollFadeIn from "@/components/ScrollFadeIn";
 import { options } from "./api/auth/[...nextauth]/options";
 import { getServerSession } from "next-auth/next";
 import UserCard from "../components/UserCard";
@@ -34,30 +35,32 @@ export default async function Home() {
     <div>
       <LandingBanner></LandingBanner>
       <div className="grid grid-cols-4 py-8 bg-white text-gray-700 z-1 ml-8 mr-8 gap-4">
-      <FeatureBox
-        imageSrc="landing-images/box-icon.png"
-        altText="Box Icon"
-        description="Marketplace"
-        scrollToId="marketplace"
-      />
-      <FeatureBox
-        imageSrc="landing-images/services-cion.png"
-        altText="Tutoring Icon"
-        description="Schedule Tutoring"
-        scrollToId="tutoring"
-      />
-      <FeatureBox
-        imageSrc="landing-images/group-icon-24.jpg"
-        altText="Chat Icon"
-        description="Join a Club"
-        scrollToId="clubs"
-      />
-      <FeatureBox
-        imageSrc="landing-images/info-icon.png"
-        altText="Chat Icon"
-        description="About"
-        scrollToId="about"
-      />
+
+          <FeatureBox
+            imageSrc="landing-images/box-icon.png"
+            altText="Box Icon"
+            description="Marketplace"
+            scrollToId="marketplace"
+          />
+
+        <FeatureBox
+          imageSrc="landing-images/services-cion.png"
+          altText="Tutoring Icon"
+          description="Schedule Tutoring"
+          scrollToId="tutoring"
+        />
+        <FeatureBox
+          imageSrc="landing-images/group-icon-24.jpg"
+          altText="Chat Icon"
+          description="Join a Club"
+          scrollToId="clubs"
+        />
+        <FeatureBox
+          imageSrc="landing-images/info-icon.png"
+          altText="Chat Icon"
+          description="About"
+          scrollToId="about"
+        />
       </div>
 
       <main className="min-h-full flex items-center justify-center bg-gray-100 py-10">
@@ -66,10 +69,16 @@ export default async function Home() {
 
       {/* Marketplace Section */}
       <div id="marketplace" className="flex flex-col items-center p-4 mb-10 mt-10">
-        <div data-aos="fade-down" className="grid">
+        {/* <div data-aos="fade-down" className="grid">
           <p className="text-3xl font-bold mb-4">
           A STUDENT'S MARKETPLACE</p>
-        </div>
+        </div> */}
+        <ScrollFadeIn>
+            <div className="grid">
+              <p className="text-3xl font-bold mb-4">
+                A STUDENT'S MARKETPLACE</p>
+            </div>
+        </ScrollFadeIn>
         <div className="grid grid-cols-3 gap-4 w-full max-w-6xl text-center text-lg">
           <div className="col-span-1 flex flex-col gap-2">
             <div className="grid grid-cols-12 gap-2">
@@ -106,10 +115,12 @@ export default async function Home() {
       {/* Tutoring Section */}
       <div id="tutoring" className="flex flex-col items-center p-4 mb-10">
         <div className="flex">
-          <div className="h-200 justify-center items-center">
-            <p className="text-3xl font-bold m-4">
-            NEED HELP WITH YOUR CLASSES?</p>
-          </div>
+          <ScrollFadeIn>
+            <div className="grid">
+              <p className="text-3xl font-bold m-4">
+              NEED HELP WITH YOUR CLASSES?</p>
+            </div>
+          </ScrollFadeIn>
           {/* <div className="w-250">
             <button className="
             absolute pl-10 pr-10 right-30 ml-10 bg-red-600 hover:bg-red-500 m-3 text-white font-bold py-2 px-3 rounded">
@@ -162,9 +173,13 @@ export default async function Home() {
 
       {/* Join a Club Section */}
       <div id="clubs" className="flex flex-col items-center p-4 mb-10">
-        <p className="text-3xl font-bold mb-4">
-          JOIN A CLUB TODAY!
-        </p>
+        <ScrollFadeIn>
+            <div>
+              <p className="text-3xl font-bold mb-4">
+                JOIN A CLUB TODAY!
+              </p>
+            </div>
+        </ScrollFadeIn>
         <div className="grid grid-cols-4 gap-4 max-w-6xl text-center">
           <div className="flex flex-col">
             <div className="bg-gray-200 flex justify-center items-center p-16 text-lg">
