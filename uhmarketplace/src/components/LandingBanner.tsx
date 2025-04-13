@@ -1,4 +1,5 @@
 import React from "react";
+import ScrollFadeIn from "@/components/ScrollFadeIn";
 
 const LandingBanner = () => {
   return (
@@ -13,19 +14,25 @@ const LandingBanner = () => {
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black pointer-events-none" />
 
-      {/* Title */}
-      <h2 className="font-league text-3xl sm:text-5xl font-bold absolute top-32 right-2 left-2 text-center">
-        MARKETPLACE & TUTORING CENTER FOR STUDENTS
-      </h2>
+        {/* Title */}
+        <h2 className="font-league text-5xl sm:text-[70px] font-bold absolute top-36 right-2 left-2 text-center drop-shadow-[0_0_4px_black]">
+          <ScrollFadeIn>
+            MARKETPLACE & TUTORING CENTER
+          </ScrollFadeIn>
+        </h2>
 
-      {/* Horizontal Line */}
-      <hr className="absolute top-48 right-20 left-20 text-center" />
+        {/* Horizontal Line */}
+        <hr className="absolute top-56 right-20 left-20 text-center" />
 
-      {/* Description */}
-      <p className="text-md sm:text-lg mt-2 absolute top-52 right-2 left-2 text-center font-semibold">
-        Here at CoogBay, you can sell, purchase, exchange products,
-        and find help by connecting with tutors!
-      </p>
+        {/* Description */}
+
+          <div className="text-md sm:text-xl mt-2 absolute top-56 right-2 left-2 text-center font-semibold drop-shadow-[0_0_2px_black]">
+            <ScrollFadeIn>
+              Here at CoogBay, you can sell, purchase, exchange products,
+              and find help by connecting with tutors!
+            </ScrollFadeIn>
+          </div>
+
     </div>
   );
 };

@@ -1,4 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+import AnimatedFeatureBoxes from "../components/AnimatedFeatureBoxes";
+import { motion } from "framer-motion";
 import ScrollFadeIn from "@/components/ScrollFadeIn";
 import { options } from "./api/auth/[...nextauth]/options";
 import { getServerSession } from "next-auth/next";
@@ -11,6 +13,20 @@ import AboutSquare from "@/components/AboutSquare";
 import LandingBanner from "@/components/LandingBanner";
 
 export default async function Home() {
+  const containerVariants = {
+    hidden: {},
+    show: {
+      transition: {
+        staggerChildren: 0.3, // Delay between each child
+      },
+    },
+  };
+  
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    show: { opacity: 1, y: 0 },
+  };
+
   const session = await getServerSession(options);
   console.log(session);
   const images = [
@@ -34,34 +50,7 @@ export default async function Home() {
   return (
     <div>
       <LandingBanner></LandingBanner>
-      <div className="grid grid-cols-4 py-8 bg-white text-gray-700 z-1 ml-8 mr-8 gap-4">
-
-          <FeatureBox
-            imageSrc="landing-images/box-icon.png"
-            altText="Box Icon"
-            description="Marketplace"
-            scrollToId="marketplace"
-          />
-
-        <FeatureBox
-          imageSrc="landing-images/services-cion.png"
-          altText="Tutoring Icon"
-          description="Schedule Tutoring"
-          scrollToId="tutoring"
-        />
-        <FeatureBox
-          imageSrc="landing-images/group-icon-24.jpg"
-          altText="Chat Icon"
-          description="Join a Club"
-          scrollToId="clubs"
-        />
-        <FeatureBox
-          imageSrc="landing-images/info-icon.png"
-          altText="Chat Icon"
-          description="About"
-          scrollToId="about"
-        />
-      </div>
+      <AnimatedFeatureBoxes></AnimatedFeatureBoxes>
 
       <main className="min-h-full flex items-center justify-center bg-gray-100 py-10">
         <ImageCarousel images={images} captions = {captions} />
@@ -138,7 +127,7 @@ export default async function Home() {
               </div>
               <div>
                 <div className="grid grid-cols-2 gap-2">
-                  <div className="bg-gray-200 p-4 rounded text-center">
+                  <div className="bg-white-200 p-4 rounded text-center">
                     <div className="h-32 flex items-center justify-center mb-2">
                       <img
                         src="landing-images/business-handshake-on-transparent-background-free-png.webp"
@@ -151,7 +140,7 @@ export default async function Home() {
                       Discover countless tutors to help you succeed in your classes
                     </p>
                   </div>
-                  <div className="bg-gray-200 p-4 rounded text-center">
+                  <div className="bg-white-200 p-4 rounded text-center">
                     <div className="h-32 flex items-center justify-center mb-2">
                       <img className="w-20 h-20" src="landing-images\wall-clock-silhouette-image.png" />
                     </div>
@@ -182,9 +171,11 @@ export default async function Home() {
         </ScrollFadeIn>
         <div className="grid grid-cols-4 gap-4 max-w-6xl text-center">
           <div className="flex flex-col">
-            <div className="bg-gray-200 flex justify-center items-center p-16 text-lg">
-              With over 500 registered student organizations, you're guaranteed to find a club of your interest
-              and meet up with other like-minded students!
+            <div className="bg-white-200 flex justify-center items-center p-14 text-lg">
+              <ScrollFadeIn>
+                With over 500 registered student organizations, you're guaranteed to find a club of your interest
+                and meet up with other like-minded students!
+              </ScrollFadeIn>
             </div>
             <a
               href="https://uh.edu/nsm/students/student-organizations/"
