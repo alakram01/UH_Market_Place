@@ -64,36 +64,43 @@ export default async function Home() {
         </div> */}
         <ScrollFadeIn>
             <div className="grid">
-              <p className="text-3xl font-bold mb-4">
+              <p className="text-4xl font-bold mb-4">
                 A STUDENT'S MARKETPLACE</p>
             </div>
         </ScrollFadeIn>
         <div className="grid grid-cols-3 gap-4 w-full max-w-6xl text-center text-lg">
           <div className="col-span-1 flex flex-col gap-2">
+            <hr className="z-20 text-center border-gray-400 border-t-2"/>
             <div className="grid grid-cols-12 gap-2">
-              <div className="py-8 col-span-7 bg-gray-200 p-4 rounded">
-                <h2 className="font-bold mb-[10px]">SET UP to SELL!</h2>
-                <p>User-friendly marketplace website to sell products to other students.</p>
-              </div>
-              <div className="col-span-5 bg-gray-200 p-4 rounded flex items-center justify-center">
+              <div className="col-span-5 p-4 rounded flex items-center justify-center">
                 <img
                   src="landing-images/og-shopping-cart.png"
-                  className="w-[8rem] h-[8rem] object-contain mx-auto drop-shadow-md"
+                  className="w-[118px] h-[128px] object-contain mx-auto drop-shadow-md"
                 />
               </div>
+              <div className="py-4 col-span-7 p-4 rounded">
+                <ScrollFadeIn>
+                  <h2 className="font-bold mb-[5px]">SET UP to SELL!</h2>
+                  <p>User-friendly marketplace website to sell products to other students.</p>
+                </ScrollFadeIn>
+              </div>
             </div>
+            <hr className="z-20 text-center border-gray-400 border-t-2 border-gray-300"/>
             <div className="grid grid-cols-12 gap-2">
-              <div className="col-span-5 bg-gray-200 p-4 rounded flex items-center justify-center">
+              <div className="col-span-5 p-4 rounded flex items-center justify-center">
                 <img
                   src="landing-images/money-icon.png"
-                  className="w-[6rem] h-[6rem]"
+                  className="w-[96px] h-[96px]"
                 />
               </div>
-              <div className="py-8 col-span-7 bg-gray-200 p-4 rounded">
-                <h2 className="font-bold mb-[10px] text-nowrap">The PLACE to BUY</h2>
-                <p>Shop and exchange products & services with fellow students!</p>
+              <div className="py-4 col-span-7 p-4 rounded">
+                <ScrollFadeIn>
+                  <h2 className="font-bold mb-[5px] text-nowrap">The PLACE to BUY</h2>
+                  <p>Shop and exchange products & services with fellow students!</p>
+                </ScrollFadeIn>
               </div>
             </div>
+            <hr className="mt-5 z-20 text-center border-gray-400 border-t-2"/>
           </div>
           <div className="ml-2 col-span-2 flex justify-center items-center">
           <ImageCarousel2 images={images} captions = {captions2} />
@@ -106,49 +113,50 @@ export default async function Home() {
         <div className="flex">
           <ScrollFadeIn>
             <div className="grid">
-              <p className="text-3xl font-bold m-4">
+              <p className="text-4xl font-bold m-4">
               NEED HELP WITH YOUR CLASSES?</p>
             </div>
           </ScrollFadeIn>
-          {/* <div className="w-250">
-            <button className="
-            absolute pl-10 pr-10 right-30 ml-10 bg-red-600 hover:bg-red-500 m-3 text-white font-bold py-2 px-3 rounded">
-              TUTORING</button>
-          </div> */}
         </div>
         <div className="grid gap-4 w-full max-w-6xl text-lg">
-          <div className="bg-gray-200 flex justify-center items-center max-w-6xl p-4">
-            Stuck on hw or worried about exams? Don't worry! We've organized every TA & Tutor's time availability
-            for you to meet up with them!
-          </div>
+          <ScrollFadeIn>
+            <div className="bg-white-200 flex justify-center items-center max-w-6xl py-0">
+              Stuck on homework or worried about exams? Don't worry! We've organized every TA & Tutor's time availability
+              for you to meet up with them!
+            </div>
+          </ScrollFadeIn>
           <div className="grid grid-cols-3 gap-4 w-full">
               <div className="col-span-2 flex justify-center items-center">
                 <img src="landing-images/tutoring-in-library.jpg"></img>
               </div>
               <div>
                 <div className="grid grid-cols-2 gap-2">
-                  <div className="bg-white-200 p-4 rounded text-center">
-                    <div className="h-32 flex items-center justify-center mb-2">
-                      <img
-                        src="landing-images/business-handshake-on-transparent-background-free-png.webp"
-                        style={{ width: "6.8rem", height: "5.5rem" }}
-                        className="object-contain"
-                      />
+                  <ScrollFadeIn>
+                    <div className="bg-white-200 p-4 rounded text-center outline outline-gray-400 outline-2">
+                      <div className="h-32 flex items-center justify-center mb-2">
+                        <img
+                          src="landing-images/business-handshake-on-transparent-background-free-png.webp"
+                          style={{ width: "6.8rem", height: "5.5rem" }}
+                          className="object-contain"
+                        />
+                      </div>
+                      <h2 className="font-bold mb-4">MEET UP WITH TUTORS</h2>
+                      <p className="mb-10">
+                        Discover countless tutors to help you succeed in your classes
+                      </p>
                     </div>
-                    <h2 className="font-bold mb-4">MEET UP WITH TUTORS</h2>
-                    <p className="mb-10">
-                      Discover countless tutors to help you succeed in your classes
-                    </p>
-                  </div>
-                  <div className="bg-white-200 p-4 rounded text-center">
-                    <div className="h-32 flex items-center justify-center mb-2">
-                      <img className="w-20 h-20" src="landing-images\wall-clock-silhouette-image.png" />
+                  </ScrollFadeIn>
+                  <ScrollFadeIn>
+                    <div className="bg-white-200 p-4 rounded text-center outline outline-gray-400 outline-2">
+                      <div className="h-32 flex items-center justify-center mb-2">
+                        <img className="w-20 h-20" src="landing-images\wall-clock-silhouette-image.png" />
+                      </div>
+                      <h2 className="font-bold mb-4">SET A TIME AND PLACE</h2>
+                      <p className="mb-10">
+                        We've easily organized the time and place of your choosing!
+                      </p>
                     </div>
-                    <h2 className="font-bold mb-4">SET A TIME AND PLACE</h2>
-                    <p className="mb-10">
-                      We've easily organized the time and place of your choosing!
-                    </p>
-                  </div>
+                  </ScrollFadeIn>
                 </div>
                 <div className="row-span-1">
                   <button className="mt-3 w-full text-white py-3 font-bold bg-red-600 hover:bg-red-500 rounded-lg">
@@ -164,7 +172,7 @@ export default async function Home() {
       <div id="clubs" className="flex flex-col items-center p-4 mb-10">
         <ScrollFadeIn>
             <div>
-              <p className="text-3xl font-bold mb-4">
+              <p className="text-4xl font-bold mb-4">
                 JOIN A CLUB TODAY!
               </p>
             </div>

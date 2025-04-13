@@ -12,26 +12,25 @@ const LandingBanner = () => {
       />
 
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black pointer-events-none" />
+      <div className="absolute top-0 left-0 right-0 h-80 bg-gradient-to-b from-black to-transparent z-10 pointer-events-none" />
 
         {/* Title */}
-        <h2 className="font-league text-5xl sm:text-[70px] font-bold absolute top-36 right-2 left-2 text-center drop-shadow-[0_0_4px_black]">
+        <h2 className="z-20 font-league text-5xl sm:text-[70px] font-bold absolute top-36 right-2 left-2 text-center drop-shadow-[0_0_4px_black]">
           <ScrollFadeIn>
             MARKETPLACE & TUTORING CENTER
           </ScrollFadeIn>
         </h2>
 
         {/* Horizontal Line */}
-        <hr className="absolute top-56 right-20 left-20 text-center" />
+        <hr className="z-20 absolute top-56 right-20 left-20 text-center" />
 
         {/* Description */}
-
-          <div className="text-md sm:text-xl mt-2 absolute top-56 right-2 left-2 text-center font-semibold drop-shadow-[0_0_2px_black]">
-            <ScrollFadeIn>
-              Here at CoogBay, you can sell, purchase, exchange products,
-              and find help by connecting with tutors!
-            </ScrollFadeIn>
-          </div>
+        <div className="z-20 text-md sm:text-xl mt-2 absolute top-56 right-2 left-2 text-center font-semibold drop-shadow-[0_0_2px_black]">
+          <ScrollFadeIn>
+            Here at CoogBay, you can sell, purchase, exchange products,
+            and find help by connecting with tutors!
+          </ScrollFadeIn>
+        </div>
 
     </div>
   );
