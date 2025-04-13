@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import AnimatedFeatureBoxes from "../components/AnimatedFeatureBoxes";
+import FadeInGrid from "@/components/FadeInGrid";
 import { motion } from "framer-motion";
 import ScrollFadeIn from "@/components/ScrollFadeIn";
 import { options } from "./api/auth/[...nextauth]/options";
@@ -194,8 +195,8 @@ export default async function Home() {
               Find your club!
             </a>
           </div>
-          <div className="flex col-span-3 justify-center items-center max-w-5xl">
-            <img src="landing-images/student-clubs.png" />
+          <div className="col-span-3">
+            <FadeInGrid></FadeInGrid>
           </div>
         </div>
       </div>
