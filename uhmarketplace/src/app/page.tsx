@@ -53,9 +53,9 @@ export default async function Home() {
       <LandingBanner></LandingBanner>
       <AnimatedFeatureBoxes></AnimatedFeatureBoxes>
 
-      <main className="min-h-full flex items-center justify-center bg-gray-100 py-10">
+      {/* <main className="min-h-full flex items-center justify-center bg-gray-100 py-10">
         <ImageCarousel images={images} captions = {captions} />
-      </main>
+      </main> */}
 
       {/* Marketplace Section */}
       <div id="marketplace" className="flex flex-col items-center p-4 mb-10 mt-10">
