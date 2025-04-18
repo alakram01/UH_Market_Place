@@ -10,6 +10,8 @@ import SellerCarousel from "@/components/sellerCarousel";
 // future imports for the componets made from the tuturhub designs
 import Listpannel from "@/components/Listpannel";
 import LiveTutoringPage from "@/components/LiveTutoringPage";
+import ScrollFadeIn from "@/components/ScrollFadeIn";
+import ScrollFadeInNoRepeat from "@/components/ScrollFadeInNoRepeat";
 //import LiveTutoringPage2 from "@/components/LiveTutoringPage2";
 export default  function TutorHub() {
 
@@ -31,16 +33,24 @@ export default  function TutorHub() {
       default:
         
         return (
-            
-          <Image
-            src={tutorimage}
-            alt="deafult image"
-            width={1300} 
-            height={200}
-            className="rounded shadow"
-          />
-        )
-        ;
+            <div className="relative w-fit">
+                <ScrollFadeInNoRepeat>
+                    <div className="absolute text-black z-20 top-8 left-12 text-2xl p-2">
+                        Cougar
+                    </div>
+                    <div className="absolute text-black z-20 top-12 left-10 text-[60px] p-2 font-bold">
+                        Tutor Hub
+                    </div>
+                </ScrollFadeInNoRepeat>
+                <Image
+                    src={tutorimage}
+                    alt="deafult image"
+                    width={1300} 
+                    height={300}
+                    className="rounded shadow mb-4"
+                />
+            </div>
+        );
     }
   };
 
@@ -57,7 +67,7 @@ export default  function TutorHub() {
           {renderContent()}
           <div className="flex flex-col md:flex-row items-start md:space-x-6">
            
-            <div className="flex-1">
+            <div className="flex-1 mt-4">
               <h1 className="text-2xl font-bold mb-2 text-red-700">
                 Spring 2025 Drop-in Tutoring Schedule
               </h1>
@@ -79,7 +89,7 @@ export default  function TutorHub() {
           </div>
 
           
-          <div className="mt-8 space-y-4">
+          <div className="mt-4 space-y-4">
             
             <details className="border rounded">
               <summary className="cursor-pointer px-4 py-2 bg-gray-200 font-semibold">

@@ -103,6 +103,17 @@ export default async function Home() {
               </div>
             </div>
             <hr className="mt-5 z-20 text-center border-gray-400 border-t-2"/>
+            <a 
+                href="/marketplace"
+                rel="noopener noreferrer"
+                className="group flex justify-center items-center mt-[10px] w-full text-white py-3 font-bold bg-red-600 hover:bg-red-700 text-center block rounded-lg transition-all"
+            >
+                Marketplace!
+                <img 
+                src="landing-images/white-arrow.png" 
+                className="ml-3 h-4 transition-transform duration-300 group-hover:translate-x-[3px]" 
+                />
+            </a>
           </div>
           <div className="ml-2 col-span-2 flex justify-center items-center">
           <ImageCarousel2 images={images} captions = {captions2} />
@@ -161,18 +172,17 @@ export default async function Home() {
                   </ScrollFadeIn>
                 </div>
                 <div className="row-span-1">
-                <a 
-    href="https://uh.edu/nsm/students/student-organizations/"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="group flex justify-center items-center mt-[10px] w-full text-white py-3 font-bold bg-red-600 hover:bg-red-700 text-center block rounded-lg transition-all"
->
-    Schedule Now!
-    <img 
-    src="landing-images/white-arrow.png" 
-    className="ml-3 h-4 transition-transform duration-300 group-hover:translate-x-[3px]" 
-    />
-</a>
+                  <a 
+                      href="/tutorhub"
+                      rel="noopener noreferrer"
+                      className="group flex justify-center items-center mt-[10px] w-full text-white py-3 font-bold bg-red-600 hover:bg-red-700 text-center block rounded-lg transition-all"
+                  >
+                      Schedule Now!
+                      <img 
+                      src="landing-images/white-arrow.png" 
+                      className="ml-3 h-4 transition-transform duration-300 group-hover:translate-x-[3px]" 
+                      />
+                  </a>
                 </div>
               </div>
           </div>

@@ -9,16 +9,14 @@ type ScrollFadeInProps = {
   delay?: number;
 };
 
-export default function ScrollFadeIn({ children, delay = 0 }: ScrollFadeInProps) {
+export default function ScrollFadeInNoRepeat({ children, delay = 0 }: ScrollFadeInProps) {
   const controls = useAnimation();
-  const [ref, inView] = useInView({ threshold: 0.2, triggerOnce: false });
+  const [ref, inView] = useInView({ threshold: 0.2, triggerOnce: true });
 
   useEffect(() => {
     if (inView) {
       controls.start("visible");
-    } else {
-        controls.start("hidden");
-      }
+    }
   }, [controls, inView]);
 
   return (
