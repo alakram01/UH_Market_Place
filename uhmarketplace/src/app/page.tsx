@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+import TutoringImageSlider from "@/components/ImagePhaser";
 import AnimatedFeatureBoxes from "../components/AnimatedFeatureBoxes";
 import FadeInGrid from "@/components/FadeInGrid";
 import { motion } from "framer-motion";
@@ -128,7 +129,7 @@ export default async function Home() {
           </ScrollFadeIn>
           <div className="grid grid-cols-3 gap-4 w-full">
               <div className="col-span-2 flex justify-center items-center">
-                <img src="landing-images/tutoring-in-library.jpg"></img>
+                <TutoringImageSlider></TutoringImageSlider>
               </div>
               <div>
                 <div className="grid grid-cols-2 gap-2">
@@ -160,9 +161,18 @@ export default async function Home() {
                   </ScrollFadeIn>
                 </div>
                 <div className="row-span-1">
-                  <button className="mt-3 w-full text-white py-3 font-bold bg-red-600 hover:bg-red-500 rounded-lg">
-                    Schedule Now!
-                  </button>
+                <a 
+    href="https://uh.edu/nsm/students/student-organizations/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="group flex justify-center items-center mt-[10px] w-full text-white py-3 font-bold bg-red-600 hover:bg-red-700 text-center block rounded-lg transition-all"
+>
+    Schedule Now!
+    <img 
+    src="landing-images/white-arrow.png" 
+    className="ml-3 h-4 transition-transform duration-300 group-hover:translate-x-[3px]" 
+    />
+</a>
                 </div>
               </div>
           </div>
@@ -186,13 +196,17 @@ export default async function Home() {
                 and meet up with other like-minded students!
               </ScrollFadeIn>
             </div>
-            <a
+            <a 
               href="https://uh.edu/nsm/students/student-organizations/"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-[10px] w-full text-white py-3 font-bold bg-red-600 hover:bg-red-500 text-center block rounded-lg"
+              className="group flex justify-center items-center mt-[10px] w-full text-white py-3 font-bold bg-red-600 hover:bg-red-700 text-center block rounded-lg transition-all"
             >
               Find your club!
+              <img 
+                src="landing-images/white-arrow.png" 
+                className="ml-3 h-4 transition-transform duration-300 group-hover:translate-x-[3px]" 
+              />
             </a>
           </div>
           <div className="col-span-3">

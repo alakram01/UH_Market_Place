@@ -1,7 +1,8 @@
 // FadeInGrid.tsx
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useAnimation, useInView } from "framer-motion";
+import { useRef, useEffect } from "react";
 
 const containerVariants = {
   hidden: {},
@@ -19,15 +20,24 @@ const itemVariants = {
 };
 
 const FadeInGrid = () => {
-  // simulate 6 columns x 4 rows of the same image
-  // const images = Array.from({ length: 12 }, (_, i) => `club-images/club-1.png`);
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const controls = useAnimation();
 
+  useEffect(() => {
+    if (inView) {
+      controls.start("show");
+    }
+  }, [inView, controls]);
+
+  const images = Array.from({ length: 24 }, (_, i) => `club-images/club-1.png`);
   return (
     <motion.div
+      ref={ref}
       className="grid grid-cols-6 gap-3 max-w-5xl mx-auto"
       variants={containerVariants}
       initial="hidden"
-      animate="show"
+      animate={controls}
     >
       <motion.div variants={itemVariants} className="p-2">
           <img src={`club-images/club-1.png`} className="w-full h-auto object-contain" />
