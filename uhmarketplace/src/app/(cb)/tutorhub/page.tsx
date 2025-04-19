@@ -15,7 +15,7 @@ import ScrollFadeInNoRepeat from "@/components/ScrollFadeInNoRepeat";
 //import LiveTutoringPage2 from "@/components/LiveTutoringPage2";
 export default  function TutorHub() {
 
-    const [selectedSection, setSelectedSection] = useState<string | null>(null);
+    const [selectedSection, setSelectedSection] = useState("TutorHub");
 
   
   const renderContent = () => {
@@ -31,7 +31,6 @@ export default  function TutorHub() {
       case "cooggerTutorHub":
         return <CooggerTutorHub />;
       default:
-        
         return (
             <div className="relative w-fit">
                 <ScrollFadeInNoRepeat>
@@ -56,11 +55,10 @@ export default  function TutorHub() {
 
   return (
     <div className="min-h-screen flex flex-col">
-     
-
       <div className="flex flex-1">
-        <Listpannel onSelect={(section) => setSelectedSection(section)} />
-
+        <Listpannel
+          onSelect={(section) => setSelectedSection(section)}
+          selectedSection={selectedSection}></Listpannel>
         
         <main className="flex-1 p-6">
          
