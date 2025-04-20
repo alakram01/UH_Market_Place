@@ -121,6 +121,70 @@ export default async function Home() {
         </div>
       </div>
 
+      <div id="check-in" className="flex flex-col items-center p-4 mb-10 mt-10">
+        {/* <div data-aos="fade-down" className="grid">
+          <p className="text-3xl font-bold mb-4">
+          A STUDENT'S MARKETPLACE</p>
+        </div> */}
+        <ScrollFadeIn>
+            <div className="grid">
+              <p className="text-4xl font-bold mb-4">
+                Daily Check-In Bot</p>
+            </div>
+        </ScrollFadeIn>
+        <div className="grid grid-cols-4 gap-4 w-full max-w-6xl text-center text-lg">
+          <div className="grid">
+            <div className="bg-white-200 p-4 rounded text-center outline outline-gray-400 outline-2">
+              <ScrollFadeIn>
+                <h2 className="font-bold mb-4 mt-4">STAY on TRACK!</h2>
+                <p className="mb-6 mx-4">
+                  Customizable questions to see what you learned in class today
+                </p>
+                <p className="mb-2 mx-4">
+                  Keep up with your studies with daily questionaires!
+                </p>
+              </ScrollFadeIn>
+              <div className="h-32 flex items-center justify-center mb-2">
+                <img
+                  src="landing-images/question-mark.png"
+                  style={{ width: "6.8rem", height: "5.5rem" }}
+                  className="object-contain"
+                />
+              </div>
+            </div>
+          </div>
+          <div className="relative col-span-2 h-[454px] w-[576px]">
+            <img src="landing-images/clutter-words.png"/>
+          </div>
+          <div className="bg-white-200 p-4 rounded text-center outline outline-gray-400 outline-2">
+            <div className="h-32 flex items-center justify-center mb-2">
+              <img
+                src="landing-images/calendar.png"
+                style={{ width: "6.8rem", height: "5.5rem" }}
+                className="object-contain"
+              />
+            </div>
+            <ScrollFadeIn>
+              <h2 className="font-bold mb-4">TRACK your MOOD!</h2>
+              <p className="mb-10">
+                AI system can detects your mood performance throughout the course
+              </p>
+            </ScrollFadeIn>
+            <a 
+                href="/tutorhub"
+                rel="noopener noreferrer"
+                className="group flex justify-center items-center mt-[10px] w-full text-white py-3 font-bold bg-red-600 hover:bg-red-700 text-center block rounded-lg transition-all"
+            >
+                Daily Check-In
+                <img 
+                src="landing-images/white-arrow.png" 
+                className="ml-3 h-4 transition-transform duration-300 group-hover:translate-x-[3px]" 
+                />
+            </a>
+          </div>
+        </div>
+      </div>
+
       {/* Tutoring Section */}
       <div id="tutoring" className="flex flex-col items-center p-4 mb-10">
         <div className="flex">

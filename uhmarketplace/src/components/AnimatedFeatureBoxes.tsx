@@ -35,6 +35,14 @@ const AnimatedFeatureBoxes = () => {
       </motion.div>
       <motion.div variants={itemVariants}>
         <FeatureBox
+          imageSrc="landing-images/chat-icon.png"
+          altText="Chat Icon"
+          description="Check In Bot"
+          scrollToId="check-in"
+        />
+      </motion.div>
+      <motion.div variants={itemVariants}>
+        <FeatureBox
           imageSrc="landing-images/services-cion.png"
           altText="Tutoring Icon"
           description="Schedule Tutoring"
@@ -47,14 +55,6 @@ const AnimatedFeatureBoxes = () => {
           altText="Chat Icon"
           description="Join a Club"
           scrollToId="clubs"
-        />
-      </motion.div>
-      <motion.div variants={itemVariants}>
-        <FeatureBox
-          imageSrc="landing-images/info-icon.png"
-          altText="Chat Icon"
-          description="About"
-          scrollToId="about"
         />
       </motion.div>
     </motion.div>
