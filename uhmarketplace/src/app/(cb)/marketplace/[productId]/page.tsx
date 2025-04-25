@@ -26,8 +26,8 @@ export default async function Product({
                         <div className="md:w-1/2 md:pl-10 mt-6 md:mt-0">
                             <h1 className="text-4xl font-bold mb-6">{post.title}</h1>
                             <p className="text-gray-700 mb-6">{post.description}</p>
-                            <p className="text-3xl font-semibold text-blue-600 mb-6">${post.price.toString()}</p>
-                            <button className="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Buy Now</button>
+                            <p className="text-3xl font-semibold text-black-600 mb-6">${post.price.toString()}</p>
+                            <button className="px-6 py-3 bg-red-500 text-white rounded-lg hover:bg-red-600">Buy Now</button>
                             <p className="text-gray-700 mb-6 pt-5">Created by: {post.authorName}</p>
                             <p className="text-gray-700 mb-6">Authors Email: {post.authorEmail}</p>
                             <p className="text-gray-700 mb-6">{post.createdAt.toLocaleDateString()}</p>

@@ -32,9 +32,9 @@ export default async function Home() {
   const session = await getServerSession(options);
   console.log(session);
   const images = [
-    "/landing-images/UH-Image-1.jpg",
-    "/landing-images/UH-Image-2.jpg",
-    "/landing-images/UH-Image-3.jpg",
+    "/landing-images/step1.png",
+    "/landing-images/step2.png",
+    "/landing-images/step3.png",
   ];
 
   const captions = [
@@ -44,9 +44,9 @@ export default async function Home() {
   ];
 
   const captions2 = [
-    "1) Insert a photo of a product/service you would like to sell",
-    "2) Insert a name and price for you product/service",
-    "3) Post your listing into the marketplace",  
+    "1) Click on your profile picture",
+    "2) In your profile, click on \"Create New Listing\"",
+    "3) Enter the title, description, price and image url to create your listing!",  
   ]
   
   return (

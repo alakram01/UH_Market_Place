@@ -9,6 +9,10 @@ import Sidebar from "@/components/sideBar";
 import ItemCarousel from "@/components/itemCarousel";
 import DiscoverList from "@/components/discoverItems";
 import SellerCarousel from "@/components/sellerCarousel";
+import ScrollFadeIn from "@/components/ScrollFadeIn";
+import Image from "next/image";
+import tutorimage from "@/components/images/marketplace-image.png";
+import ScrollFadeInNoRepeat from "@/components/ScrollFadeInNoRepeat";
 
 // https://next-auth.js.org/getting-started/client
 // Test the middleware by navigating to the /dashboard route
@@ -89,17 +93,34 @@ export default async function Marketplace() {
 
   return (
     <div className="bg-white flex">
-      <Sidebar />
-      <div className="flex flex-col w-full">
-        <h1 className="text-cougRed text-2xl underline decoration-4 underline-offset-8 p-4">
-          Nearby Listings
+      <Sidebar/>
+      <div className="flex flex-col w-full m-4">
+        <div className="relative w-fit">
+            <Image
+              src={tutorimage}
+              alt="deafult image"
+              width={1480} 
+              height={300}
+              className="rounded shadow mb-4"
+            />
+
+            <div className="absolute text-black z-20 top-8 left-12 text-2xl p-2">
+                Cougar
+            </div>
+            <div className="absolute text-black z-20 top-12 left-10 text-[60px] p-2 font-bold">
+                Marketplace
+            </div>
+
+        </div>
+        <h1 className="text-cougRed text-3xl decoration-4 underline-offset-8 p-2 underline">
+          Popular Items
         </h1>
 
         <ItemCarousel
           items={items.map((item) => ({ ...item}))}
         />
-        <h1 className="text-cougRed text-2xl underline decoration-4 underline-offset-8 p-4">
-          Popular Items
+        <h1 className="text-cougRed text-3xl decoration-4 underline-offset-8 p-2 underline">
+          Nearby Listings
         </h1>
         <ItemCarousel
           items={items.map((item) => ({ ...item}))}

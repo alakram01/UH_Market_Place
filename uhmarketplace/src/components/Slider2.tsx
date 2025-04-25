@@ -19,7 +19,7 @@ const ImageCarousel2: React.FC<ImageCarouselProps> = ({ images, captions }) => {
         prevIndex === images.length - 1 ? 0 : prevIndex + 1
       );
       setAnimating(false);
-    }, 500); // Animation duration matches the CSS transition
+    }, 600); // Animation duration matches the CSS transition
   };
 
   const prevSlide = () => {
@@ -30,14 +30,14 @@ const ImageCarousel2: React.FC<ImageCarouselProps> = ({ images, captions }) => {
         prevIndex === 0 ? images.length - 1 : prevIndex - 1
       );
       setAnimating(false);
-    }, 500); // Animation duration matches the CSS transition
+    }, 600); // Animation duration matches the CSS transition
   };
 
   // Automatically slide every 5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();
-    }, 5000); // 5 seconds interval
+    }, 6000); // 5 seconds interval
 
     // Cleanup interval on unmount
     return () => clearInterval(interval);
@@ -60,8 +60,8 @@ const ImageCarousel2: React.FC<ImageCarouselProps> = ({ images, captions }) => {
             />
             {/* Caption */}
             {index === currentIndex && (
-              <div className="absolute bottom-4 left-4 bg-white/80 px-4 py-2 rounded-md shadow-md">
-                <p className="text-black text-sm font-medium">{captions[index]}</p>
+              <div className="absolute bottom-4 left-4 bg-white/90 px-4 py-2 rounded-md shadow-md">
+                <p className="text-black text-md font-medium">{captions[index]}</p>
               </div>
             )}
           </div>
@@ -70,7 +70,7 @@ const ImageCarousel2: React.FC<ImageCarouselProps> = ({ images, captions }) => {
 
       {/* Navigation Buttons */}
       <button
-        className="absolute top-1/2 left-4 -translate-y-1/2 p-2 bg-white/80 rounded-full shadow-md hover:bg-white/90"
+        className="absolute top-1/2 left-4 -translate-y-1/2 p-2 bg-white/80 rounded-full shadow-md hover:bg-white/95"
         onClick={prevSlide}
         disabled={animating} // Disable button while animating
       >
