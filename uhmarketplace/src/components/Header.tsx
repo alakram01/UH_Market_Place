@@ -79,8 +79,9 @@ const Header = async (props: props) => {
             className="self-center"
             >
                 <Avatar
-                src={profileImage?.profilePicUrl}
-                ></Avatar>
+                  src={profileImage?.profilePicUrl || "/default-avatar.png"}
+                  alt="User Avatar"
+                />
             </Link>
           ): (
             null
