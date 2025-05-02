@@ -33,22 +33,9 @@ export async function DELETE(req: NextRequest) {
       product: product.stripeProductId,
     });
 
-    if (prices.data.length > 0) {
-      // If there are associated prices, archive them first
-      console.log('Archiving associated prices for product:', product.stripeProductId);
-      for (const price of prices.data) {
-        await stripe.prices.update(price.id, {
-          active: false, // Archive the price
-        });
-        console.log('Archived price with ID:', price.id);
-      }
-    } else {
-      console.log('No associated prices found for this product');
-    }
-
-    // Step 2: Attempt to delete the product from Stripe
-    console.log('Deleting product from Stripe with ID:', product.stripeProductId);
-    await stripe.products.del(product.stripeProductId);
+    await stripe.products.update(product.stripeProductId, {
+      active: false
+    });
 
     // Step 3: Delete the product from the database
     console.log('Deleting product from database');

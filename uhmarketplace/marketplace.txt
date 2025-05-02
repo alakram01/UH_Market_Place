@@ -1,0 +1,9 @@
+What is wrong in the marketplace?
+
+-> The design is not clean, on top of that, some of the item product have different div sizes
+-> There is no search bar
+-> 
+
+May 2th 
+Want to go over how the CSS/Tailwind CSS is for time carasoul.
+
