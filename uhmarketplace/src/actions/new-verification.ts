@@ -40,7 +40,7 @@ export const newVerification = async (token: string) => {
     })
 
     // Delete the verification token after verification
-    await prisma.verificationToken.delete({
+    await prisma.verificationtoken.delete({
         where: {
             id:existingToken.id
         }    
