@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { options } from "./api/auth/[...nextauth]/options";
+import  options  from "./api/auth/[...nextauth]/options";
 import { getServerSession } from "next-auth/next";
 import UserCard from "../components/UserCard";
 import ImageCarousel from "../components/Slider";
