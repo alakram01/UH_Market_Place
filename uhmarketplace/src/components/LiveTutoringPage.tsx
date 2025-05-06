@@ -13,13 +13,13 @@ export default function LiveTutoringPage() {
       <p>Your Socket ID: {clientId}</p>
 
       <div className="flex flex-col space-y-4">
-        {/* Video elements for local and remote streams */}
+        {/* Video elements for local and remote streams /}
         <div className="flex space-x-4">
           <video ref={localVideoRef} autoPlay playsInline muted className="w-1/2 border" />
           <video ref={remoteVideoRef} autoPlay playsInline className="w-1/2 border" />
         </div>
 
-        {/* Input field for remote peer ID */}
+        {/ Input field for remote peer ID /}
         <input
           type="text"
           value={remotePeerId}
@@ -28,7 +28,7 @@ export default function LiveTutoringPage() {
           className="mt-4 border px-2 py-1"
         />
 
-        {/* Call control buttons */}
+        {/ Call control buttons */}
         <div className="flex space-x-4">
           <button className="mt-4 bg-blue-500 text-white px-4 py-2">
             Start Call

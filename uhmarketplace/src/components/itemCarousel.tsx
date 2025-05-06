@@ -25,7 +25,7 @@ const ItemCarousel: React.FC<ItemCarouselProps> = ({ items }) => {
       {/* Carousel Container */}
       <div className="flex gap-8 pb-4 pt-2 overflow-x-auto scroll-smooth">
         {/* Using responsive classes for different screen sizes */}
-        <div className="flex gap-4 sm:w-[calc(100%-48px)] md:w-[calc(100%-96px)] lg:w-[calc(100%-144px)] xl:w-[calc(100%-192px)]">
+        <div className="ml-8 flex gap-4 sm:w-[calc(100%-48px)] md:w-[calc(100%-96px)] lg:w-[calc(100%-144px)] xl:w-[calc(100%-192px)]">
           {items.map((item, index) => (
             <div
               key={item.id}
@@ -48,13 +48,13 @@ const ItemCarousel: React.FC<ItemCarouselProps> = ({ items }) => {
       {/* Navigation Buttons */}
       <button
         onClick={handlePrev}
-        className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-blue-600 text-white p-2 rounded-full shadow-lg hover:bg-blue-700"
+        className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-red-600 text-white p-2 rounded-full shadow-lg hover:bg-red-700"
       >
         &#8249;
       </button>
       <button
         onClick={handleNext}
-        className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-blue-600 text-white p-2 rounded-full shadow-lg hover:bg-blue-700"
+        className="absolute top-1/2 right-0 transform -translate-y-1/2 bg-red-600 text-white p-2 rounded-full shadow-lg hover:bg-red-700"
       >
         &#8250;
       </button>

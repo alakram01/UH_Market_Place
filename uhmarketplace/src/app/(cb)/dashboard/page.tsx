@@ -91,7 +91,7 @@ export default async function Dashboard() {
                   </Link>
                   </div>
                   <div className="mt-6">
-                    <h3 className="text-2xl font-medium font-extrabold">Your Listings</h3>
+                    <h3 className="ml-6 underline text-2xl font-medium font-extrabold">Your Listings:</h3>
                     {/* <ul className="mt-2"> */}
                     <div className="overflow-y-auto max-h-96">
                     {userPosts.length > 0 ? (

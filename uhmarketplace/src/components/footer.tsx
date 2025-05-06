@@ -4,10 +4,10 @@ import Image from 'next/image'; // Import Next.js Image component
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-white">
-      <div className="container mx-auto px-4 py-8">
+    <footer id="about" className="bg-gray-800 text-white">
+      <div className="container mx-auto px-16 py-8">
         {/* Top Section */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 py-4">
           {/* About Section with Logo */}
           <div className="flex items-start space-x-4">
             {/* Logo */}
@@ -61,7 +61,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom Section */}
-        <div className="mt-8 border-t border-gray-700 pt-4 text-center text-sm">
+        <div className="mt-8 border-t border-gray-700 pt-4 text-center text-sm pt-8">
           <p>&copy; {new Date().getFullYear()} CoogBay. All rights reserved.</p>
         </div>
       </div>

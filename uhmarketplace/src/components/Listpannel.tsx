@@ -2,46 +2,34 @@
 "use client";
 
 type ListpannelProps = {
-    onSelect: (section: string) => void;
-  };
+  onSelect: (section: string) => void;
+  selectedSection: string;
+};
 
-  export default function Listpannel({ onSelect }: ListpannelProps) {
-    return (
-      <aside className="hidden md:block w-64 bg-gray-100 p-4">
-        <nav>
-          <ul className="space-y-4">
+export default function Listpannel({ onSelect, selectedSection }: ListpannelProps) {
+  return (
+    <aside className="hidden md:block w-64 bg-gray-100 p-4">
+      <nav>
+        <ul className="space-y-4">
+          {[
+            { key: "liveTutoring", label: "Live Tutoring" },
+            { key: "coursesSupported", label: "Courses Supported" },
+            { key: "uhWorkshops", label: "UH Workshops" },
+            { key: "resources", label: "Resources" },
+            { key: "TutorHub", label: "Coog Tutor Hub" },
+          ].map(({ key, label }) => (
             <li
-              onClick={() => onSelect("liveTutoring")}
-              className="font-semibold text-red-700 cursor-pointer hover:underline"
+              key={key}
+              onClick={() => onSelect(key)}
+              className={`font-semibold cursor-pointer hover:underline ${
+                selectedSection === key ? "text-red-700" : "text-gray-700"
+              }`}
             >
-              Live Tutoring
+              {label}
             </li>
-            <li
-              onClick={() => onSelect("coursesSupported")}
-              className="font-semibold text-gray-700 cursor-pointer hover:underline"
-            >
-              Courses Supported
-            </li>
-            <li
-              onClick={() => onSelect("uhWorkshops")}
-              className="font-semibold text-gray-700 cursor-pointer hover:underline"
-            >
-              UH Workshops
-            </li>
-            <li
-              onClick={() => onSelect("resources")}
-              className="font-semibold text-gray-700 cursor-pointer hover:underline"
-            >
-              Resources
-            </li>
-            <li
-              onClick={() => onSelect("TutorHub")}
-              className="font-semibold text-gray-700 cursor-pointer hover:underline"
-            >
-              Coog Tutor Hub
-            </li>
-          </ul>
-        </nav>
-      </aside>
-    );
-  }
+          ))}
+        </ul>
+      </nav>
+    </aside>
+  );
+}
