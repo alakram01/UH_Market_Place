@@ -8,6 +8,7 @@ import Footer from "@/components/footer";
 import AboutSquare from "@/components/AboutSquare";
 import LandingBanner from "@/components/LandingBanner";
 
+
 export default async function Home() {
   const session = await getServerSession(options);
   console.log(session);

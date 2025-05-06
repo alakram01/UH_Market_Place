@@ -24,6 +24,29 @@ model User {
   @@unique([email, name])
   passwordResets   PasswordReset[] // Define the reverse relation to PasswordReset
 }
+model UserCheckIns {
+  id               Int       @id @default(autoincrement())
+  email            String
+  date             DateTime  @default(now())
+
+  question1        String
+  answer1          String
+  question2        String
+  answer2          String
+  question3        String
+  answer3          String
+  personalNote     String
+
+  sentimentLabel   String?
+  sentimentScore   Int?
+  productRec       String?
+
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  @@index([email, date])
+}
+
 
 model PasswordReset {
   id        Int      @id @default(autoincrement())

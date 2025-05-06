@@ -67,6 +67,28 @@ const Header = async (props: props) => {
               Sign Up
             </a>
           )}
+          {props.session ? (
+            <a
+              href="/studycheck"
+              className="border border-transparent px-6 py-3 text-white hover:border-white transition-all duration-200 rounded-full lg:text-2xl text-lg"
+            >
+              StudyCheck
+            </a>
+          ) : (
+            <a
+              href="/studycheck"
+              className="border border-transparent px-6 py-3 text-white hover:border-white transition-all duration-200 rounded-full lg:text-2xl text-md md:text-lg"
+            >
+              StudyCheck
+            </a>
+          )}
+          
+           <a
+            href="/tutorhub"
+            className="border border-transparent px-6 py-3 text-white hover:border-white transition-all duration-200 rounded-full lg:text-2xl text-md md:text-lg"
+          >
+            TutorHub
+          </a>
           <a
             href="/marketplace"
             className="border border-transparent px-6 py-3 text-white hover:border-white transition-all duration-200 rounded-full lg:text-2xl text-md md:text-lg"

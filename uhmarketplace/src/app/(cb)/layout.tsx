@@ -1,5 +1,6 @@
 export default async function CoogBayLayout({
     children,
+    
 } : {
     children: React.ReactNode
 }) {
