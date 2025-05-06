@@ -3,49 +3,58 @@ import { NextResponse } from 'next/server';
 import { hash } from 'bcrypt';
 import { generateVerificationToken } from '@/lib/token';
 import { sendVerificationEmail } from '@/lib/mail';
-// POST request for the registration of a user. 
 
 const prisma = new PrismaClient();
 
 export async function POST(req: Request) {
     try {
+        console.log("Request received");
         const body = await req.json();
+        console.log("Parsed body:", body);
 
-        const { email, password, name } = body;
+        const email = body.email?.toLowerCase().trim();
+        const password = body.password;
+        const name = body.name;
+
+        console.log("Email after trim/lowercase:", email);
 
         const existingUser = await prisma.user.findUnique({
-            // making email lowercase to avoid case-sensitivity errors
-            // specifically for resend email verification
-            where: {email: email.toLowerCase() }
-        })
+            where: { email }
+        });
 
-        if(existingUser) {
-            return NextResponse.json({ user: null, message: "User with this email already exists"}, {status: 409})
+        console.log("Existing user lookup:", existingUser);
+
+        if (existingUser) {
+            console.log("User already exists, returning 409");
+            return NextResponse.json({ user: null, message: "User with this email already exists" }, { status: 409 });
         }
 
         const hashPass = await hash(password, 10);
+        console.log("Password hashed");
 
-      
-        // Allow for both for the time being please - Alex
-        if(email?.endsWith("@uh.edu") || email?.endsWith("@gmail.com")) {
+        if (email?.endsWith("@uh.edu") || email?.endsWith("@gmail.com")) {
             await prisma.user.create({
                 data: {
-                    email: email.toLowerCase(),
+                    email,
                     hashedPassword: hashPass,
-                    name: name
+                    name
                 }
-            })
+            });
+            console.log("User created successfully in database");
         } else {
-            return NextResponse.json({message: "This email is not a valid UH email"}, {status: 400})
+            console.log("Invalid email domain");
+            return NextResponse.json({ message: "This email is not a valid UH email" }, { status: 400 });
         }
 
-        // Generate a verification token
         const verificationToken = await generateVerificationToken(email);
+        console.log("Generated verification token:", verificationToken);
 
-        await sendVerificationEmail(email, verificationToken.token)
-        
-        return NextResponse.json(body);
+        await sendVerificationEmail(email, verificationToken.token);
+        console.log("Sent verification email");
+
+        return NextResponse.json({ message: "Signup successful, verification email sent" });
     } catch (error) {
-        return NextResponse.json(error);
+        console.error("Error occurred in signup route:", error);
+        return NextResponse.json({ error: "Internal Server Error", detail: error }, { status: 500 });
     }
 }

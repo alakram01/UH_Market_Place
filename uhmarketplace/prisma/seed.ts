@@ -13,7 +13,7 @@ async function main() {
             email: 'alex@uh.edu',
             name: 'alex',
             hashedPassword: hashPass,
-            posts: {
+            post: {
                 create: [{
                     price: "19.99",
                     title: "Big Cougars",
@@ -31,7 +31,7 @@ async function main() {
             email: 'joseph@uh.edu',
             name: 'Joseph',
             hashedPassword: hashPass,
-            posts: {
+            post: {
                 create: [{
                     price: "10",
                     title: "Big Cougars 2",
