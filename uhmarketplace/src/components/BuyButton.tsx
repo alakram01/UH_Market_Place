@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 export default function BuyButton({ priceId }: { priceId: string }) {
+  console.log("Price ID inside BuyButton:", priceId);
   const [loading, setLoading] = useState(false);
 
   const handleBuyNow = async () => {
@@ -12,7 +13,7 @@ export default function BuyButton({ priceId }: { priceId: string }) {
       const response = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ priceId }),
+        body: JSON.stringify({ priceId }), // Send the priceId to the checkout API
       });
 
       const data = await response.json();
