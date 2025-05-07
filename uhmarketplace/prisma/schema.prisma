@@ -61,3 +61,25 @@ enum user_role {
   USER
   ADMIN
 }
+model UserCheckIns {
+  id               Int       @id @default(autoincrement())
+  email            String
+  date             DateTime  @default(now())
+
+  question1        String
+  answer1          String
+  question2        String
+  answer2          String
+  question3        String
+  answer3          String
+  personalNote     String
+
+  sentimentLabel   String?
+  sentimentScore   Int?
+  productRec       String?
+
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  @@index([email, date])
+}
