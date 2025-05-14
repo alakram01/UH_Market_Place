@@ -1,9 +1,9 @@
 import React from 'react';
-import { Post } from '@prisma/client';
+import { post } from '@prisma/client';
 
 // Define the props interface for the ItemCard
 interface ItemCardProps {
-    item: Post
+    item: post
 }
 
 const ItemCard: React.FC<ItemCardProps> = ({ item }) => {

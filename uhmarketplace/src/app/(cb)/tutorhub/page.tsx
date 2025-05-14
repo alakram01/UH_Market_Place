@@ -10,19 +10,12 @@ import SellerCarousel from "@/components/sellerCarousel";
 // future imports for the componets made from the tuturhub designs
 import Listpannel from "@/components/Listpannel";
 import LiveTutoringPage from "@/components/LiveTutoringPage";
-<<<<<<< HEAD
-//import LiveTutoringPage2 from "@/components/LiveTutoringPage2";
-export default  function TutorHub() {
-
-    const [selectedSection, setSelectedSection] = useState<string | null>(null);
-=======
 import ScrollFadeIn from "@/components/ScrollFadeIn";
 import ScrollFadeInNoRepeat from "@/components/ScrollFadeInNoRepeat";
 //import LiveTutoringPage2 from "@/components/LiveTutoringPage2";
 export default  function TutorHub() {
 
     const [selectedSection, setSelectedSection] = useState("TutorHub");
->>>>>>> fork/main
 
   
   const renderContent = () => {
@@ -38,20 +31,6 @@ export default  function TutorHub() {
       case "cooggerTutorHub":
         return <CooggerTutorHub />;
       default:
-<<<<<<< HEAD
-        
-        return (
-            
-          <Image
-            src={tutorimage}
-            alt="deafult image"
-            width={1300} 
-            height={200}
-            className="rounded shadow"
-          />
-        )
-        ;
-=======
         return (
             <div className="relative w-fit">
                 <ScrollFadeInNoRepeat>
@@ -71,35 +50,22 @@ export default  function TutorHub() {
                 />
             </div>
         );
->>>>>>> fork/main
     }
   };
 
   return (
     <div className="min-h-screen flex flex-col">
-<<<<<<< HEAD
-     
-
-      <div className="flex flex-1">
-        <Listpannel onSelect={(section) => setSelectedSection(section)} />
-
-=======
       <div className="flex flex-1">
         <Listpannel
           onSelect={(section) => setSelectedSection(section)}
           selectedSection={selectedSection}></Listpannel>
->>>>>>> fork/main
         
         <main className="flex-1 p-6">
          
           {renderContent()}
           <div className="flex flex-col md:flex-row items-start md:space-x-6">
            
-<<<<<<< HEAD
-            <div className="flex-1">
-=======
             <div className="flex-1 mt-4">
->>>>>>> fork/main
               <h1 className="text-2xl font-bold mb-2 text-red-700">
                 Spring 2025 Drop-in Tutoring Schedule
               </h1>
@@ -121,11 +87,7 @@ export default  function TutorHub() {
           </div>
 
           
-<<<<<<< HEAD
-          <div className="mt-8 space-y-4">
-=======
           <div className="mt-4 space-y-4">
->>>>>>> fork/main
             
             <details className="border rounded">
               <summary className="cursor-pointer px-4 py-2 bg-gray-200 font-semibold">
