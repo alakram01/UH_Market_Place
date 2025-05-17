@@ -7,7 +7,7 @@ import React from "react";
 export default function LoginPage() {
     const handleMicrosoftLogin = async () => {
         await signIn("azure-ad", {
-            callbackUrl: "/marketplace" // or wherever you want to redirect after login
+            callbackUrl: "https://localhost:3000/auth/login/aad/callback" // or wherever you want to redirect after login
         });
     };
 
