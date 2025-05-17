@@ -2,11 +2,11 @@
 'use client'
 import React, { useState } from 'react';
 import ItemCard from './itemCard';
-import { Post } from '@prisma/client';
+import { post } from '@prisma/client';
 import Link from 'next/link';
 
 interface ItemCarouselProps {
-  items: Post[]
+  items: post[]
 }
 
 const ItemCarousel: React.FC<ItemCarouselProps> = ({ items }) => {

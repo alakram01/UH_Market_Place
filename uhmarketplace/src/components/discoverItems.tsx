@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import ItemList from './itemList';
-import { Post } from '@prisma/client';
+import { post } from '@prisma/client';
 
 interface DiscoverListProps {
-  items: Post[];
+  items: post[];
 }
 
 const DiscoverList: React.FC<DiscoverListProps> = ({items}) => {

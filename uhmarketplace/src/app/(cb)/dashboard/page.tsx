@@ -56,52 +56,63 @@ export default async function Dashboard() {
       <main>
         <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
           <div className="px-4 py-6 sm:px-0">
-            <div className="border-4 border-dashed border-gray-200 rounded-lg h-96">
-              {session ? (
+            <div className="grid grid-cols-3 gap-3 h-[130px]">
+              <div className="flex items-center space-x-4 p-5 bg-white rounded-lg">
                 <div>
-                  <div className="flex items-center space-x-4 p-5">
-                    <Avatar
+                  <Avatar
                       src={profileImage?.profilePicUrl}
                       alt="Profile Picture"
-                      size="md"
+                      size="lg"
                     />
-                    <div>
-                      <h2 className="text-xl font-semibold">
-                        Welcome, {userInfo?.name}
-                      </h2>
-                      <p className="text-gray-600">{session?.user?.email}</p>
-                    </div>
+                </div>
+                <div>
+                  <div>
+                    <h2 className="text-xl font-semibold">
+                      Welcome, {userInfo?.name}
+                    </h2>
+                    <p className="text-gray-600">{session?.user?.email}</p>
+                  </div>
+                  <div className="gap-4">
                     <Link href={'/dashboard/userProfile'}>
-                      <button className="mt-4 px-4 py-2 bg-green-500 text-white rounded">
+                      <button className="mt-2 px-4 py-2 bg-red-500 text-white rounded mr-2">
                         Edit Profile
                       </button>
                     </Link>
                     {userInfo?.role === 'ADMIN' && (
                         <Link href={'/adminDashboard'}>
-                            <button className="mt-4 px-4 py-2 bg-green-500 text-white rounded">
+                            <button className="mt-2 px-4 py-2 bg-red-500 text-white rounded">
                             Admin Dashboard
                             </button>
                         </Link>
                     )}
-
                     <Link href={'/create_post'}>
-                    <button className="mt-4 px-4 py-2 bg-blue-500 text-white rounded">
-                        Create New Listing
-                    </button>
-                  </Link>
+                      <button className="mt-2 px-4 py-2 bg-gray-500 text-white rounded">
+                          Create New Listing
+                      </button>
+                    </Link>
                   </div>
-                  <div className="mt-6">
-                    <h3 className="ml-6 underline text-2xl font-medium font-extrabold">Your Listings:</h3>
-                    {/* <ul className="mt-2"> */}
-                    <div className="overflow-y-auto max-h-96">
-                    {userPosts.length > 0 ? (
-                            <UserPosts userPosts={userPosts} />
-                        ) : (
-                            <p className="text-center text-gray-600 mt-4">
-                            No listings, create one now!
-                            </p>
-                        )}
-                    </div>
+                </div>
+              </div>
+              <div className="flex items-center space-x-4 p-5 bg-white rounded-lg">
+
+              </div>
+              <div className="flex items-center space-x-4 p-5 bg-white rounded-lg">
+
+              </div>
+            </div>
+            <div className="rounded-lg h-96 bg-white mt-4">
+              {session ? (
+                <div className="mt-6">
+                  <h3 className="ml-6 pt-4 text-2xl font-medium font-extrabold">Your Listings:</h3>
+                  {/* <ul className="mt-2"> */}
+                  <div className="overflow-y-auto max-h-96">
+                  {userPosts.length > 0 ? (
+                          <UserPosts userPosts={userPosts} />
+                      ) : (
+                          <p className="text-center text-gray-600 mt-8">
+                          No listings, create one now!
+                          </p>
+                      )}
                   </div>
                 </div>
               ) : (
