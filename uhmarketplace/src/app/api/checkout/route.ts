@@ -8,12 +8,13 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
 export async function POST(req: Request) {
   try {
     const { priceId } = await req.json();
+    console.log(priceId)
 
     const session = await stripe.checkout.sessions.create({
       ui_mode: "hosted",
       line_items: [
         {
-          price: "price_1R6z8sQRB6yqGc4CpuNNMRtV",
+          price: priceId,
           quantity: 1,
         },
       ],

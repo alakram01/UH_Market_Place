@@ -6,14 +6,14 @@ import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
-import { Post, User } from '@prisma/client';
+import { post, user } from '@prisma/client';
 
 const AdminDashboard = () => {
   const { data: session } = useSession();
   const router = useRouter();
   const [userRole, setUserRole] = useState<string | null>(null);
-  const [posts, setPosts] = useState<Post[]>([]);
-  const [users, setUsers] = useState<User[]>([]);
+  const [posts, setPosts] = useState<post[]>([]);
+  const [users, setUsers] = useState<user[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

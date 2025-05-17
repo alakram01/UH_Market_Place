@@ -30,8 +30,10 @@ export default async function Product({
               <p className="text-gray-700 mb-6">{post.description}</p>
               <p className="text-3xl font-semibold text-blue-600 mb-6">${post.price.toString()}</p>
 
-              {/* Use BuyButton and pass the price ID */}
-              <BuyButton priceId={post.id.toString()} />
+              {/* Use BuyButton and pass the stripePriceId */}
+              <BuyButton priceId={post.stripePriceId || 'defaultPriceId'} />
+
+
 
               <p className="text-gray-700 mb-6 pt-5">Created by: {post.authorName}</p>
               <p className="text-gray-700 mb-6">Author's Email: {post.authorEmail}</p>

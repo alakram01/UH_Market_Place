@@ -1,7 +1,8 @@
 import { useSession } from "next-auth/react";
+import { getServerSession } from "next-auth";
 import { prisma } from "../../../../prisma/prisma";
 import { options } from "@/app/api/auth/[...nextauth]/options";
-import { getServerSession } from "next-auth";
+
 import { Avatar, user } from "@nextui-org/react";
 import Link from "next/link";
 import ItemCard from "@/components/itemCard";
@@ -90,7 +91,7 @@ export default async function Dashboard() {
                   </Link>
                   </div>
                   <div className="mt-6">
-                    <h3 className="text-2xl font-medium font-extrabold">Your Listings</h3>
+                    <h3 className="ml-6 underline text-2xl font-medium font-extrabold">Your Listings:</h3>
                     {/* <ul className="mt-2"> */}
                     <div className="overflow-y-auto max-h-96">
                     {userPosts.length > 0 ? (

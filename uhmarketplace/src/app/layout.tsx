@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import { getServerSession } from "next-auth/next";
 import { AuthProvider } from "./api/auth/hooks/auth-provider"; // ✅ fixed import
 
+
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -23,8 +24,10 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
   children,
+  modal
 }: Readonly<{
   children: React.ReactNode;
+  modal: React.ReactNode;
 }>) {
   const session = await getServerSession();
 
@@ -34,6 +37,7 @@ export default async function RootLayout({
         <Header session={session} />
         <AuthProvider>
           {children}
+          {modal}
         </AuthProvider>
       </body>
     </html>

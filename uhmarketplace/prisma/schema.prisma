@@ -29,6 +29,7 @@ model post {
   authorName  String
   user        user     @relation(fields: [authorEmail, authorName], references: [email, name], map: "Post_authorEmail_authorName_fkey")
   stripeProductId String?
+  stripePriceId   String?
 
   @@index([authorEmail, authorName], map: "Post_authorEmail_authorName_fkey")
 }
@@ -59,4 +60,26 @@ model verificationtoken {
 enum user_role {
   USER
   ADMIN
+}
+model UserCheckIns {
+  id               Int       @id @default(autoincrement())
+  email            String
+  date             DateTime  @default(now())
+
+  question1        String
+  answer1          String
+  question2        String
+  answer2          String
+  question3        String
+  answer3          String
+  personalNote     String
+
+  sentimentLabel   String?
+  sentimentScore   Int?
+  productRec       String?
+
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  @@index([email, date])
 }

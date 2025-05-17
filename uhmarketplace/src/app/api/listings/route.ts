@@ -61,12 +61,12 @@ export async function DELETE(req: NextRequest) {
 export async function POST(req: NextRequest) {
   const session = await getServerSession(options);
 
-  const {title, description, price, imageUrl} = await req.json();
+  const { title, description, price, imageUrl } = await req.json();
 
   try {
-
+    // Now, create the Product and link it to the Price
     const stripeProduct = await stripe.products.create({
-      name:title,
+      name: title,
       description: description,
       images: imageUrl ? [imageUrl] : [],
       default_price_data: {
@@ -75,6 +75,19 @@ export async function POST(req: NextRequest) {
       },
     });
 
+    // Create the Price object first
+    const priceObject = await stripe.prices.create({
+      product: stripeProduct.id,
+      currency: 'usd', // Set currency (e.g., USD)
+      unit_amount: price * 100, // Convert price to cents (e.g., $10 becomes 1000)
+    });
+
+    // Step 3: Link the Price to the Product by updating the product with the default_price
+    await stripe.products.update(stripeProduct.id, {
+      default_price: priceObject.id, // Link the price to the product
+    });
+
+    // Save the created Product and Price details in your Prisma database
     const newListing = await prisma.post.create({
       data: {
         title,
@@ -83,13 +96,14 @@ export async function POST(req: NextRequest) {
         price,
         authorEmail: session?.user?.email as string,
         authorName: session?.user?.name as string,
-        stripeProductId: stripeProduct.id
+        stripeProductId: stripeProduct.id, // Save the Stripe Product ID
+        stripePriceId: priceObject.id,     // Save the Stripe Price ID
       },
     });
 
-    return NextResponse.json(newListing, {status: 201});
+    return NextResponse.json(newListing, { status: 201 });
   } catch (error) {
-    return NextResponse.json({message: 'Internal server error'}, {status: 500});
+    console.error('Error creating product:', error); // Log any errors
+    return NextResponse.json({ message: 'Internal server error' }, { status: 500 });
   }
 }
-
