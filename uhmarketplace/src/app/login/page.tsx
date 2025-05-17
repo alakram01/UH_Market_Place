@@ -4,7 +4,7 @@ import { signIn } from "next-auth/react";
 import Link from "next/link";
 import React from "react";
 import Navbar from 'react-bootstrap/Navbar';
-import { SignInButton } from 'src/components/userActions/signinButton';
+import { SignInButton } from './src/components/userActions/SignInButton';
 import { SignOutButton } from 'src/components/userActions/signoutButton';
 
 

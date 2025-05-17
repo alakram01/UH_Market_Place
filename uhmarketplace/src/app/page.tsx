@@ -4,7 +4,7 @@ import AnimatedFeatureBoxes from "../components/AnimatedFeatureBoxes";
 import FadeInGrid from "@/components/FadeInGrid";
 import { motion } from "framer-motion";
 import ScrollFadeIn from "@/components/ScrollFadeIn";
-import { options } from "./api/auth/[...nextauth]/options";
+import { authOptions } from "./api/auth/[...nextauth]/options";
 import { getServerSession } from "next-auth/next";
 import UserCard from "../components/UserCard";
 import ImageCarousel from "../components/Slider";
@@ -30,7 +30,7 @@ export default async function Home() {
     show: { opacity: 1, y: 0 },
   };
 
-  const session = await getServerSession(options);
+  const session = await getServerSession(authOptions);
   console.log(session);
   const images = [
     "/landing-images/step1.png",
