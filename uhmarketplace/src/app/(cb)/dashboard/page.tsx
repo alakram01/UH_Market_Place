@@ -9,6 +9,7 @@ import ItemCard from "@/components/itemCard";
 import axios from "axios";
 import toast from "react-hot-toast";
 import UserPosts from "@/components/userActions/UserPosts";
+import React from "react";
 
 // https://next-auth.js.org/getting-started/client
 // Test the middleware by navigating to the /dashboard route
@@ -46,6 +47,8 @@ export default async function Dashboard() {
         }
     })
 
+  const rating = 4.5;
+
   return (
     <div className="min-h-screen bg-gray-100">
       <header className="bg-white shadow">
@@ -54,16 +57,16 @@ export default async function Dashboard() {
         </div>
       </header>
       <main>
-        <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto py-0 sm:px-6 lg:px-8">
           <div className="px-4 py-6 sm:px-0">
-            <div className="grid grid-cols-3 gap-3 h-[130px]">
+            <div className="grid grid-cols-3 gap-3 h-[160px]">
               <div className="flex items-center space-x-4 p-5 bg-white rounded-lg">
                 <div>
                   <Avatar
                       src={profileImage?.profilePicUrl}
                       alt="Profile Picture"
                       size="lg"
-                    />
+                  />
                 </div>
                 <div>
                   <div>
@@ -93,8 +96,34 @@ export default async function Dashboard() {
                   </div>
                 </div>
               </div>
-              <div className="flex items-center space-x-4 p-5 bg-white rounded-lg">
-
+              <div className="grid grid-rows-4 p-5 bg-white rounded-lg">
+                <div className="flex h-[24px] mt-2">
+                  <div><p className="font-semibold mr-3">Marketplace Rating:</p></div>
+                  <div className="flex items-center text-yellow-500 mb-1">
+                    {/* Render rating stars */}
+                    {Array.from({ length: 5 }, (_, i) => (
+                      <svg
+                        key={i}
+                        className={`w-5 h-5 ${i < rating ? "fill-current" : "text-gray-300"}`}
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10 15.27l5.18 3.73-1.64-6.91L18 7.24l-6.92-.59L10 1 8.92 6.65 2 7.24l4.46 5.85-1.64 6.91L10 15.27z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    ))}
+                    <span className="ml-2 text-sm text-gray-500">({rating}/5)</span>
+                  </div>
+                </div>
+                <div className="row-span-3 mt-1">
+                  <p className="font-semibold">Description:</p>
+                  <p>I sell used computes, and Im able to repair your computer when needed!</p>
+                </div>
               </div>
               <div className="flex items-center space-x-4 p-5 bg-white rounded-lg">
 
