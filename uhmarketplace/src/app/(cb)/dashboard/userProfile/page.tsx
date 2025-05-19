@@ -12,8 +12,7 @@ const AccountPage = () => {
   const [profilePicUrl, setProfilePicUrl] = useState('');
   const router = useRouter();
 
-  const defaultProfilePicUrl = 'https://media.istockphoto.com/id/1223671392/vector/default-profile-picture-avatar-photo-placeholder-vector-illustration.jpg?s=612x612&w=0&k=20&c=s0aTdmT5aU6b8ot7VKm11DeID6NctRCpB755rA1BIP0=';
-
+  const defaultProfilePicUrl = 'https://www.google.com/imgres?q=aang&imgurl=https%3A%2F%2Foyster.ignimgs.com%2Fmediawiki%2Fapis.ign.com%2Favatar-the-last-airbender%2Fb%2Fb0%2FAang_img.jpg&imgrefurl=https%3A%2F%2Fwww.ign.com%2Fwikis%2Favatar-the-last-airbender-legend-of-korra%2FAvatar_Aang&docid=MNpgi0g0P6kmzM&tbnid=BBkSqQyFJdg-7M&vet=12ahUKEwjorP7_0q6NAxUBGtAFHQJrOjsQM3oECHAQAA..i&w=332&h=363&hcb=2&ved=2ahUKEwjorP7_0q6NAxUBGtAFHQJrOjsQM3oECHAQAA';
   useEffect(() => {
     if (session) {
       setName(session.user?.name || '');
