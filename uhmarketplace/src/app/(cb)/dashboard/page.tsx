@@ -125,14 +125,16 @@ export default async function Dashboard() {
                   <p>I sell used computes, and Im able to repair your computer when needed!</p>
                 </div>
               </div>
-              <div className="flex items-center space-x-4 p-5 bg-white rounded-lg">
-
+              <div className="p-5 bg-white rounded-lg">
+                <p className="mt-2 font-semibold">Tutoring History:</p>
+                <p>Johny Whales - March 24, 2025</p>
+                <p>Ballie Bells - April 3, 2025</p>
               </div>
             </div>
             <div className="rounded-lg h-96 bg-white mt-4">
               {session ? (
                 <div className="mt-6">
-                  <h3 className="ml-6 pt-4 text-2xl font-medium font-extrabold">Your Listings:</h3>
+                  <h3 className="ml-6 pt-8 pl-4 text-2xl font-medium font-semibold">Your Listings:</h3>
                   {/* <ul className="mt-2"> */}
                   <div className="overflow-y-auto max-h-96">
                   {userPosts.length > 0 ? (
