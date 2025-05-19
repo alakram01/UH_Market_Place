@@ -53,7 +53,7 @@ const SellerSummaryCard: React.FC<SellerSummaryCardProps> = ({
 
       {/* Bio Section */}
       <div className="px-4 py-2">
-        <p className="text-sm text-gray-600">{bio}</p>
+        <p className="text-sm text-gray-600 h-[60px]">{bio}</p>
       </div>
 
       {/* Products and View Profile */}
