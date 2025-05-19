@@ -9,9 +9,9 @@ interface ItemCardProps {
 const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
   return (
     <div className="w-full max-w-xs max-h-96 bg-cougRed rounded-lg shadow-lg overflow-hidden">
-      <img className="w-full h-56 object-cover" src={item.imageUrl as string || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVYS7KEXYFAwqdRCW81e4DSR_nSLYSFStx1Q&s"} alt={item.title} />
+      <img className="w-[320px] h-56 object-cover" src={item.imageUrl as string || "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVYS7KEXYFAwqdRCW81e4DSR_nSLYSFStx1Q&s"} alt={item.title} />
       
-      <div className="p-4 text-black">
+      <div className="p-4 text-black h-[172px]">
         <h3 className="text-lg font-semibold text-black">{item.title}</h3>
         <p className="text-sm mt-2 text-black">{item.description}</p>
         
