@@ -54,7 +54,7 @@
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
     "@types/jsonwebtoken": "^9.0.7",
-    "@types/node": "^20.17.1",
+    "@types/node": "^20.17.48",
     "@types/nodemailer": "^6.4.17",
     "@types/react": "^18",
     "@types/react-dom": "^18",

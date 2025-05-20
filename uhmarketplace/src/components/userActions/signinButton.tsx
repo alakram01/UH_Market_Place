@@ -1,30 +1,43 @@
+// src/components/userActions/SignInButton.tsx
+"use client";
 import React from "react";
-import { useMsal } from "@azure/msal-react";
-import { loginRequest } from "./src/app/api/auth/auth-config";
-import DropdownButton from "react-bootstrap/DropdownButton";
-import Dropdown from "react-bootstrap/Dropdown";
+import { msalinstance } from "@/app/api/auth/msalinstance";
+import { loginRequest, graphConfig } from "@/app/api/auth/auth-config";
 
-/**
- * Renders a drop down button with child buttons for logging in with a popup or redirect
- */
-export const SignInButton: React.FC = () => {
-    const { instance } = useMsal();
+export const SignInButton = () => {
+    const handleLogin = async () => {
+        try {
+            const loginResponse = await msalinstance.loginPopup(loginRequest);
+            const account = loginResponse.account;
 
-    const handleLogin = (loginType:"popup" | "redirect") => {
-        if (loginType === "popup") {
-            instance.loginPopup(loginRequest).catch(e => {
-                console.log(e);
+            const tokenResponse = await msalinstance.acquireTokenSilent({
+                ...loginRequest,
+                account,
             });
-        } else if (loginType === "redirect") {
-            instance.loginRedirect(loginRequest).catch(e => {
-                console.log(e);
+
+            const accessToken = tokenResponse.accessToken;
+
+            const graphResponse = await fetch(graphConfig.graphMeEndpoint, {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                },
             });
+
+            const userProfile = await graphResponse.json();
+
+            await fetch("/api/save-user", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(userProfile),
+            });
+
+            alert("Signed in and user saved!");
+        } catch (error) {
+            console.error("Login error:", error);
         }
-    }
-    return (
-        <DropdownButton variant="secondary" className="ml-auto" drop="start" title="Sign In">
-            <Dropdown.Item as="button" onClick={() => handleLogin("popup")}>Sign in using Popup</Dropdown.Item>
-            <Dropdown.Item as="button" onClick={() => handleLogin("redirect")}>Sign in using Redirect</Dropdown.Item>
-        </DropdownButton>
-    )
-}
+    };
+
+    return <button onClick={handleLogin}>Sign In with Microsoft</button>;
+};
