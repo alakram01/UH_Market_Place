@@ -7,79 +7,63 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model passwordreset {
-  id        Int      @id @default(autoincrement())
-  token     String
-  expiresAt DateTime
-  userId    Int
-  user      user     @relation(fields: [userId], references: [id], map: "PasswordReset_userId_fkey")
+model User {
+  id            Int             @id @default(autoincrement())
+  email         String          @unique
+  name          String
+  profilePicUrl String          @default("https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541")
+  role          user_role       @default(USER)
 
-  @@index([userId], map: "PasswordReset_userId_fkey")
+  posts         post[]
+  checkIns      UserCheckIns[]
+
+  @@unique([email, name])
 }
 
 model post {
-  id          Int      @id @default(autoincrement())
-  price       Decimal  @db.Decimal(9, 2)
-  title       String
-  description String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @default(now())
-  imageUrl    String   @default("https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM=")
-  authorEmail String
-  authorName  String
-  user        user     @relation(fields: [authorEmail, authorName], references: [email, name], map: "Post_authorEmail_authorName_fkey")
+  id             Int       @id @default(autoincrement())
+  price          Decimal   @db.Decimal(9, 2)
+  title          String
+  description    String
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @default(now())
+  imageUrl       String    @default("https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM=")
+  authorEmail    String
+  authorName     String
   stripeProductId String?
   stripePriceId   String?
+
+  user           User      @relation(fields: [authorEmail, authorName], references: [email, name], map: "Post_authorEmail_authorName_fkey")
 
   @@index([authorEmail, authorName], map: "Post_authorEmail_authorName_fkey")
 }
 
-model user {
-  id             Int             @id @default(autoincrement())
-  email          String          @unique(map: "User_email_key")
-  name           String
-  hashedPassword String
-  emailVerified  DateTime?
-  profilePicUrl  String          @default("https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541")
-  role           user_role       @default(USER)
-  passwordreset  passwordreset[]
-  post           post[]
+model UserCheckIns {
+  id             Int       @id @default(autoincrement())
+  email          String
+  date           DateTime  @default(now())
 
-  @@unique([email, name], map: "User_email_name_key")
-}
+  question1      String
+  answer1        String
+  question2      String
+  answer2        String
+  question3      String
+  answer3        String
+  personalNote   String
 
-model verificationtoken {
-  id      Int      @id @default(autoincrement())
-  email   String
-  token   String
-  expires DateTime
+  sentimentLabel String?
+  sentimentScore Int?
+  productRec     String?
 
-  @@unique([email, token])
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  user           User      @relation(fields: [email], references: [email])
+
+  @@index([email, date])
 }
 
 enum user_role {
   USER
   ADMIN
-}
-model UserCheckIns {
-  id               Int       @id @default(autoincrement())
-  email            String
-  date             DateTime  @default(now())
-
-  question1        String
-  answer1          String
-  question2        String
-  answer2          String
-  question3        String
-  answer3          String
-  personalNote     String
-
-  sentimentLabel   String?
-  sentimentScore   Int?
-  productRec       String?
-
-  createdAt        DateTime  @default(now())
-  updatedAt        DateTime  @updatedAt
-
-  @@index([email, date])
 }

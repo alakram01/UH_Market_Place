@@ -1,4 +1,3 @@
-// src/components/userActions/SignInButton.tsx
 "use client";
 import React from "react";
 import { msalinstance } from "@/app/api/auth/msalinstance";
@@ -7,6 +6,9 @@ import { loginRequest, graphConfig } from "@/app/api/auth/auth-config";
 export const SignInButton = () => {
     const handleLogin = async () => {
         try {
+            // 🔧 Make sure MSAL is initialized before calling anything else
+            await msalinstance.initialize();
+
             const loginResponse = await msalinstance.loginPopup(loginRequest);
             const account = loginResponse.account;
 
@@ -36,8 +38,16 @@ export const SignInButton = () => {
             alert("Signed in and user saved!");
         } catch (error) {
             console.error("Login error:", error);
+            alert("Login failed — see console for details.");
         }
     };
 
-    return <button onClick={handleLogin}>Sign In with Microsoft</button>;
+    return (
+        <button
+            onClick={handleLogin}
+            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+        >
+            Sign In with Microsoft
+        </button>
+    );
 };
