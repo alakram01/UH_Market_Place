@@ -3,7 +3,7 @@ import Image from "next/image";
 import uhLogo from "./images/uh_white_logo.png";
 import { Session } from "next-auth";
 import Link from "next/link";
-import { Avatar } from "@nextui-org/react";
+import { Avatar } from "@nextui-org/react"; // This is the problem
 import { prisma } from "../../prisma/prisma";
 
 type props = {

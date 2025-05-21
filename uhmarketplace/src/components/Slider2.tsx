@@ -10,6 +10,7 @@ interface ImageCarouselProps {
 const ImageCarousel2: React.FC<ImageCarouselProps> = ({ images, captions }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
+  const [paused, setPaused] = useState(false);
 
   const nextSlide = () => {
     if (animating) return; // Prevent triggering during animation
@@ -35,16 +36,18 @@ const ImageCarousel2: React.FC<ImageCarouselProps> = ({ images, captions }) => {
 
   // Automatically slide every 5 seconds
   useEffect(() => {
+    if(paused) return;
+
     const interval = setInterval(() => {
       nextSlide();
     }, 6000); // 5 seconds interval
 
     // Cleanup interval on unmount
     return () => clearInterval(interval);
-  }, [currentIndex]);
+  }, [currentIndex, paused]);
 
   return (
-    <div className="relative w-full max-w-4xl mx-auto overflow-hidden">
+    <div className="relative w-full max-w-4xl mx-auto overflow-hidden border z-500">
       {/* Carousel Container */}
       <div
         className="flex transition-transform duration-500 ease-in-out"
@@ -56,7 +59,7 @@ const ImageCarousel2: React.FC<ImageCarouselProps> = ({ images, captions }) => {
             <img
               src={image}
               alt={`Slide ${index + 1}`}
-              className="w-full h-full object-cover rounded-lg shadow-lg" // Adjusted height
+              className="w-full h-full object-cover border shadow-lg" // Adjusted height
             />
             {/* Caption */}
             {index === currentIndex && (
@@ -67,15 +70,37 @@ const ImageCarousel2: React.FC<ImageCarouselProps> = ({ images, captions }) => {
           </div>
         ))}
       </div>
+      {/* Creating Listing */}
+      <div className="absolute text-xl font-semibold px-4 py-3 bg-white shadow-md">
+        <p>To Create a Listing:</p>
+      </div>
 
       {/* Navigation Buttons */}
       <button
-        className="absolute top-1/2 left-4 -translate-y-1/2 p-2 bg-white/80 rounded-full shadow-md hover:bg-white/95"
+        className="absolute bottom-0 left-16 bg-white/80 rounded-full shadow-md hover:bg-white/95"
         onClick={prevSlide}
         disabled={animating} // Disable button while animating
       >
         ◀
       </button>
+      {/* Pause / Play Toggle */}
+      <div className="flex justify-center space-x-2 z-1000">
+        {paused ? (
+          <button
+            className="text-3xl bg-white/80 p-2 rounded-full shadow-md hover:bg-white"
+            onClick={() => setPaused(false)}
+          >
+            ▶
+          </button>
+        ) : (
+          <button
+            className="text-3xl bg-white/80 p-2 rounded-full shadow-md hover:bg-white"
+            onClick={() => setPaused(true)}
+          >
+            ⏸
+          </button>
+        )}
+      </div>
       <button
         className="absolute top-1/2 right-4 -translate-y-1/2 p-2 bg-white/80 rounded-full shadow-md hover:bg-white/90"
         onClick={nextSlide}
@@ -85,7 +110,7 @@ const ImageCarousel2: React.FC<ImageCarouselProps> = ({ images, captions }) => {
       </button>
 
       {/* Indicators */}
-      <div className="flex justify-center space-x-2 mt-4">
+      <div className="absolute justify-center bottom-4 right-4 flex space-x-4">
         {images.map((_, index) => (
           <button
             key={index}

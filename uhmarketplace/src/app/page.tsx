@@ -39,12 +39,6 @@ export default async function Home() {
   ];
 
   const captions = [
-    "Meet up with fellow students",
-    "Find a community by joining clubs",
-    "Explore campus",
-  ];
-
-  const captions2 = [
     "1) Click on your profile picture",
     "2) In your profile, click on \"Create New Listing\"",
     "3) Enter the title, description, price and image url to create your listing!",  
@@ -117,7 +111,7 @@ export default async function Home() {
             </a>
           </div>
           <div className="ml-2 col-span-2 flex justify-center items-center">
-          <ImageCarousel2 images={images} captions = {captions2} />
+          <ImageCarousel2 images={images} captions = {captions} />
           </div>
         </div>
       </div>
