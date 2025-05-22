@@ -1,12 +1,26 @@
-// src/components/userActions/SignOutButton.tsx
 "use client";
-import React from "react";
-import { msalinstance } from "@/app/api/auth/msalinstance";
+
+import { signOut as nextAuthSignOut } from "next-auth/react";
+import { useMsal } from "@azure/msal-react";
 
 export const SignOutButton = () => {
-    const handleLogout = () => {
-        msalinstance.logoutPopup();
-    };
+  const { instance } = useMsal();
 
-    return <button onClick={handleLogout}>Sign Out</button>;
+  const handleLogout = async () => {
+    // Clear NextAuth session (no redirect)
+    await nextAuthSignOut({ redirect: false });
+
+    // Logout MSAL with redirect to root
+    const accounts = instance.getAllAccounts();
+    if (accounts.length > 0) {
+      instance.logoutRedirect({
+        account: accounts[0],
+        postLogoutRedirectUri: "/",
+      });
+    } else {
+      window.location.href = "/";
+    }
+  };
+
+  return <button onClick={handleLogout}>Sign Out</button>;
 };

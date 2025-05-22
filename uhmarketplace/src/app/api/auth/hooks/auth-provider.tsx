@@ -4,32 +4,37 @@ import { AuthenticationResult, EventType, PublicClientApplication } from "@azure
 import { msalConfig } from "../auth-config";
 import { MsalProvider } from "@azure/msal-react";
 import { ReactNode } from "react";
+import { msalinstance } from "../msalinstance";
+import { useEffect } from "react";
+
 
 interface AuthProviderProps {
     children: ReactNode;
 }
 
 export const AuthProvider = ({ children } : AuthProviderProps) => {
-    const msalInstance = new PublicClientApplication(msalConfig);
 
-    if (!msalInstance.getActiveAccount() && msalInstance.getAllAccounts().length > 0) {
-        msalInstance.setActiveAccount(msalInstance.getAllAccounts()[0]);
+    if (!msalinstance.getActiveAccount() && msalinstance.getAllAccounts().length > 0) {
+        msalinstance.setActiveAccount(msalinstance.getAllAccounts()[0]);
     }
 
-    msalInstance.enableAccountStorageEvents();
+    msalinstance.enableAccountStorageEvents();
 
-    msalInstance.addEventCallback((event) => {
-        var authenticationResult = event?.payload as AuthenticationResult;
-        if (event.eventType === EventType.LOGIN_SUCCESS && authenticationResult?.account) {
-            const account = authenticationResult?.account;
-            msalInstance.setActiveAccount(account);
-            window.location.reload();
-        }
+     useEffect(() => {
+        const callbackId = msalinstance.addEventCallback((event) => {
+            const authResult = event?.payload as AuthenticationResult;
+            if (event.eventType === EventType.LOGIN_SUCCESS && authResult?.account) {
+                msalinstance.setActiveAccount(authResult.account);
+                window.location.reload();
+                //router.refresh();
+                // If windown.location.reload(); is not the move use the code above this line.
+            }
     });
 
-    return <MsalProvider instance={msalInstance}>{children}</MsalProvider>;
-};
+        return () => {
+            if (callbackId) msalinstance.removeEventCallback(callbackId);
+        };
+    }, []);
 
-export function useAuthProvider() {
-    return { AuthProvider };
-}
+    return <MsalProvider instance={msalinstance}>{children}</MsalProvider>;
+};

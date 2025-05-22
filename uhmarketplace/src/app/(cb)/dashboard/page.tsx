@@ -1,7 +1,7 @@
 import { useSession } from "next-auth/react";
 import { getServerSession } from "next-auth";
 import { prisma } from "../../../../prisma/prisma";
-import { options } from "@/app/api/auth/[...nextauth]/options";
+import { authOptions } from "@/app/api/auth/[...nextauth]/options";
 
 import { Avatar, user } from "@nextui-org/react";
 import Link from "next/link";
@@ -13,7 +13,7 @@ import UserPosts from "@/components/userActions/UserPosts";
 // https://next-auth.js.org/getting-started/client
 // Test the middleware by navigating to the /dashboard route
 export default async function Dashboard() {
-  const session = await getServerSession(options);
+  const session = await getServerSession(authOptions);
   const profileImage = await prisma.user.findUnique({
     where: {
       email: session?.user?.email as string,
@@ -91,7 +91,7 @@ export default async function Dashboard() {
                   </Link>
                   </div>
                   <div className="mt-6">
-                    <h3 className="ml-6 underline text-2xl font-medium font-extrabold">Your Listings:</h3>
+                    <h3 className="ml-6 underline text-2xl font-medium">Your Listings:</h3>
                     {/* <ul className="mt-2"> */}
                     <div className="overflow-y-auto max-h-96">
                     {userPosts.length > 0 ? (

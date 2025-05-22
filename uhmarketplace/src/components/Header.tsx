@@ -8,22 +8,12 @@ import { prisma } from "../../prisma/prisma";
 
 type props = {
   session: Session | null;
+  profilePicUrl?: string | null;
 };
 
-const Header = async (props: props) => {
-  let profileImage;
-  if(props.session) {
-    profileImage = await prisma.user.findUnique({
-        where: {
-            email: props.session?.user?.email as string
-        },
-        // Only pulls the profilePicUrl from the user
-        select: {
-            profilePicUrl: true
-        }
-      })
-  }
 
+const Header = (props: props) => {
+  const { session, profilePicUrl } = props;
 
   return (
     <header
@@ -56,7 +46,7 @@ const Header = async (props: props) => {
         
 
         <nav className="flex gap-2 pr-4">
-          {props.session ? (
+          {session ? (
             <a
               href="/api/auth/signout"
               className="border border-transparent px-6 py-3 text-white hover:border-white transition-all duration-200 rounded-full lg:text-2xl text-lg"
@@ -85,13 +75,13 @@ const Header = async (props: props) => {
           >
             Marketplace
           </a>
-          {props.session ? (
+          {session ? (
             <Link 
             href={'/dashboard'}
             className="self-center"
             >
                 <Avatar
-                  src={profileImage?.profilePicUrl || "/default-avatar.png"}
+                  src={profilePicUrl || "/default-avatar.png"}
                   alt="User Avatar"
                 />
             </Link>

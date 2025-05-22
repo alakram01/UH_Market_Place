@@ -3,8 +3,9 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/Header";
 import { getServerSession } from "next-auth/next";
-import { AuthProvider } from "./api/auth/hooks/auth-provider"; // ✅ fixed import
-
+import { authOptions } from "@/app/api/auth/[...nextauth]/options"; // ✅ added
+import { AuthProvider } from "./api/auth/hooks/auth-provider";
+import { getUserProfilePic } from "@/lib/getUserProfilePic";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -24,18 +25,22 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
   children,
-  modal
+  modal,
 }: Readonly<{
   children: React.ReactNode;
   modal: React.ReactNode;
 }>) {
-  const session = await getServerSession();
+  const session = await getServerSession(authOptions); // ✅ FIXED
+
+  const profilePicUrl = session?.user?.email
+    ? await getUserProfilePic(session.user.email)
+    : null;
 
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <Header session={session} />
         <AuthProvider>
+          <Header session={session} profilePicUrl={profilePicUrl} />
           {children}
           {modal}
         </AuthProvider>
