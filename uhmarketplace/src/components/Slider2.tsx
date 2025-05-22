@@ -63,7 +63,7 @@ const ImageCarousel2: React.FC<ImageCarouselProps> = ({ images, captions }) => {
             />
             {/* Caption */}
             {index === currentIndex && (
-              <div className="absolute bottom-4 left-4 bg-white/90 px-4 py-2 rounded-md shadow-md">
+              <div className="absolute top-16 left-4 bg-white px-4 py-2 rounded-md shadow-md">
                 <p className="text-black text-md font-medium">{captions[index]}</p>
               </div>
             )}
@@ -71,13 +71,13 @@ const ImageCarousel2: React.FC<ImageCarouselProps> = ({ images, captions }) => {
         ))}
       </div>
       {/* Creating Listing */}
-      <div className="absolute text-xl font-semibold px-4 py-3 bg-white shadow-md">
+      <div className="absolute text-xl font-semibold px-4 py-3 bg-white shadow-md top-0">
         <p>To Create a Listing:</p>
       </div>
 
       {/* Navigation Buttons */}
       <button
-        className="absolute bottom-0 left-16 bg-white/80 rounded-full shadow-md hover:bg-white/95"
+        className="absolute bottom-3 left-[320px] bg-white/80 shadow-md hover:bg-white/95"
         onClick={prevSlide}
         disabled={animating} // Disable button while animating
       >
@@ -102,7 +102,7 @@ const ImageCarousel2: React.FC<ImageCarouselProps> = ({ images, captions }) => {
         )}
       </div>
       <button
-        className="absolute top-1/2 right-4 -translate-y-1/2 p-2 bg-white/80 rounded-full shadow-md hover:bg-white/90"
+        className="absolute bottom-3 left-[415px] bg-white/80 shadow-md hover:bg-white/9"
         onClick={nextSlide}
         disabled={animating} // Disable button while animating
       >

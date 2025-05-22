@@ -122,13 +122,13 @@ export default async function Dashboard() {
                 </div>
                 <div className="row-span-3 mt-1">
                   <p className="font-semibold">Description:</p>
-                  <p>I sell used computes, and Im able to repair your computer when needed!</p>
+                  <p>I sell used computers, and Im able to repair yours anytime!</p>
                 </div>
               </div>
               <div className="p-5 bg-white rounded-lg">
                 <p className="mt-2 font-semibold">Tutoring History:</p>
                 <p>Johny Whales - March 24, 2025</p>
-                <p>Ballie Bells - April 3, 2025</p>
+                <p>Erik Samson - April 3, 2025</p>
               </div>
             </div>
             <div className="rounded-lg h-96 bg-white mt-4">
