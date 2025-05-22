@@ -1,32 +1,41 @@
+// Import MSAL log level constants
 import { LogLevel } from '@azure/msal-browser';
 
-
-
+// MSAL configuration for the client application
 export const msalConfig = {
     auth: {
-        // This are the core configs passed to the msal client
+        // Application (client) ID from Azure AD - must match the one in your Azure portal
         clientId: process.env.NEXT_PUBLIC_AZURE_AD_CLIENT_ID!,
+
+        // Azure Active Directory tenant authority (login endpoint for your tenant)
         authority: `https://login.microsoftonline.com/${process.env.NEXT_PUBLIC_AZURE_AD_TENANT_ID}`,
+
+        // Where to redirect users after login
         redirectUri: "http://localhost:3000/",
+
+        // Where to redirect users after they log out
         postLogoutRedirectUri: '/',
+
+        // If false, MSAL will not navigate back to the original URL after login
         navigateToLoginRequestUrl: false,
     },
     cache: {
-        // This where the tokens are stored, in the cache, 
-        // storeAuthStateCookie: Useful for legacy browsers with strict storage settings, false is standard for modern apps.
-        cacheLocation: 'sessionStorage', 
-        storeAuthStateInCookie: false, 
+        // Specifies where the MSAL cache will be stored (sessionStorage = cleared when tab closes)
+        cacheLocation: 'sessionStorage',
+
+        // Set to true for browsers with 3rd-party cookie restrictions (e.g., Safari in strict mode)
+        storeAuthStateInCookie: false,
     },
     system: {
-        // LoggerCallback: Defines how MSAL logs messages (for debugging and monitoring)
-        // containsPii: If true, the message may contains personal info and won't be logged 
-        // It uses different LogLevel s:
-            // Error, Warning, info, and Verbose, each mapped to console method.
         loggerOptions: {
+            // Custom logger callback to handle MSAL logs
             loggerCallback: (level: any, message: any, containsPii: any) => {
+                // Do not log if the message contains personally identifiable info
                 if (containsPii) {
                     return;
                 }
+
+                // Log messages to the browser console based on their severity level
                 switch (level) {
                     case LogLevel.Error:
                         console.error(message);
@@ -48,14 +57,14 @@ export const msalConfig = {
     },
 };
 
-// This defines the permission you're requesting when the user logs in
-// "User.Read" gives read access to the user's profile using Microsoft Graph
+// This defines the permission scopes you're requesting from Microsoft Graph during login
+// "User.Read" allows reading the signed-in user's basic profile info (name, email, etc.)
 export const loginRequest = {
     scopes: ["User.Read"]
 };
 
-// This is the endpoint to get the signed-in user's profile into from Microsoft Graph
-// It returns details like name, email, and ID.
+// This is the Microsoft Graph API endpoint to fetch the currently signed-in user's profile
+// You will use this endpoint after acquiring a valid access token
 export const graphConfig = {
     graphMeEndpoint: "https://graph.microsoft.com/v1.0/me"
-};  
+};
