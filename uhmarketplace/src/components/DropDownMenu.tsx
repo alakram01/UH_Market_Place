@@ -11,9 +11,11 @@ export default function DropDownMenu() {
     <div className="relative">
       <button
         onClick={() => setOpen(!open)}
-        className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-4 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-gray-300 ring-inset hover:bg-gray-50"
+        className="border border-transparent inline-flex px-6 py-3 text-white hover:border-white transition-all duration-200 rounded-full lg:text-2xl text-lg"
       >
-        <Image src="/landing-images/hamburger-menu.png" width={40} height={40} alt="Menu" />
+        Explore
+        <img src="/landing-images/down-chevron.png"
+             className="w-[32px] h-[16px] m-2"></img>
       </button>
 
       {/* Dropdown menu */}
