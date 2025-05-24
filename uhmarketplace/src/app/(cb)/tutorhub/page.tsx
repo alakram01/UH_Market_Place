@@ -1,5 +1,6 @@
 "use client";
 // import { prisma } from "../../../../prisma/prisma";
+import dayjs from "dayjs";
 import Image from "next/image";
 import React, { useState } from "react";
 import tutorimage from "@/components/images/Tutor-image.png"
@@ -17,7 +18,31 @@ export default  function TutorHub() {
 
     const [selectedSection, setSelectedSection] = useState("TutorHub");
 
-  
+  const getSeason = () => {
+    const today = dayjs(); // current date
+    const mmdd = today.format("MM-DD");
+
+    // Winter: 12-16 to 01-12
+    if (
+      (mmdd >= "12-16" && mmdd <= "12-31") || 
+      (mmdd >= "01-01" && mmdd <= "01-12")
+    ) {
+      return "Winter";
+    }
+    // Spring: 01-13 to 05-11
+    else if (mmdd >= "01-13" && mmdd <= "05-11") {
+      return "Spring";
+    }
+    // Summer: 05-12 to 08-20
+    else if (mmdd >= "05-12" && mmdd <= "08-20") {
+      return "Summer";
+    }
+    // Fall: 08-21 to 12-15
+    else {
+      return "Fall";
+    }
+  };
+
   const renderContent = () => {
     switch (selectedSection) {
       case "liveTutoring":
@@ -67,7 +92,7 @@ export default  function TutorHub() {
            
             <div className="flex-1 mt-4">
               <h1 className="text-2xl font-bold mb-2 text-red-700">
-                Spring 2025 Drop-in Tutoring Schedule
+                {getSeason()} 2025 Drop-in Tutoring Schedule
               </h1>
               <p className="text-gray-700 mb-4">
                 Find the tutoring sessions for your courses below. Click a category
