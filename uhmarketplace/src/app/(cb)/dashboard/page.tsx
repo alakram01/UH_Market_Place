@@ -102,12 +102,10 @@ export default async function Dashboard() {
               </div>
               <div className="grid grid-rows-4 p-5 bg-white rounded-lg">
                 <div className="flex items-center h-[24px] mt-2">
-                  <p className="font-semibold mr-3">Marketplace Rating:</p>
+                  <p className="font-semibold mr-2">Marketplace Rating:</p>
                   <div className="flex flex-row items-center">
-                    <RatingStars 
-                      initialValue={4.5}
-                    />
-                    <span className="ml-2 text-sm text-gray-500">({rating}/5)</span>
+                    <RatingStars initialValue={0}/>
+                    <span className="ml-1 text-gray-500">({rating}/5)</span>
                   </div>
                 </div>
                 <div className="row-span-3 mt-1">
@@ -140,9 +138,9 @@ export default async function Dashboard() {
                 <p>Please sign in to view your dashboard.</p>
               )}
             </div>
-            <div className="rounded-lg h-128 bg-white mt-4">
+            <div className="rounded-lg h-[450px] bg-white mt-4">
               <div className="mt-6">
-                <h3 className="ml-6 pt-8 pl-4 text-2xl font-medium font-semibold">Products/Services Bought:</h3>
+                <h3 className="ml-6 mb-2 pt-8 pl-4 text-2xl font-medium font-semibold">Products/Services Bought:</h3>
                 {/* Haircut Service Divs: */}
                 <div className="ml-10 flex gap-4">                  
                   <div className="w-full max-w-xs max-h-96 bg-cougRed rounded-lg shadow-lg overflow-hidden">
@@ -158,7 +156,8 @@ export default async function Dashboard() {
                         <div className="ml-4">
                           <p className="font-semibold">Rate the Seller?</p>
                           <div className="flex items-center">
-                            <RatingStars initialValue={4.5} />
+                            <RatingStars initialValue={0}/>
+                            <span className="ml-1 text-gray-500">({rating}/5)</span>
                           </div>
                         </div>
                       </div>
