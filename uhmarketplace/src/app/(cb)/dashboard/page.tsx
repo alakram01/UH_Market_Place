@@ -5,7 +5,7 @@ import { useSession } from "next-auth/react";
 import { getServerSession } from "next-auth";
 import { prisma } from "../../../../prisma/prisma";
 import { options } from "@/app/api/auth/[...nextauth]/options";
-// import { Rating } from "@material-tailwind/react";
+import RatingStars from '@/components/RatingStars'
 
 import { Avatar, user } from "@nextui-org/react";
 import Link from "next/link";
@@ -101,26 +101,12 @@ export default async function Dashboard() {
                 </div>
               </div>
               <div className="grid grid-rows-4 p-5 bg-white rounded-lg">
-                <div className="flex h-[24px] mt-2">
-                  <div><p className="font-semibold mr-3">Marketplace Rating:</p></div>
-                  <div className="flex items-center text-yellow-500 mb-1">
-                    {/* Render rating stars */}
-                    {Array.from({ length: 5 }, (_, i) => (
-                      <svg
-                        key={i}
-                        className={`w-5 h-5 ${i < rating ? "fill-current" : "text-gray-300"}`}
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                        aria-hidden="true"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M10 15.27l5.18 3.73-1.64-6.91L18 7.24l-6.92-.59L10 1 8.92 6.65 2 7.24l4.46 5.85-1.64 6.91L10 15.27z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    ))}
+                <div className="flex items-center h-[24px] mt-2">
+                  <p className="font-semibold mr-3">Marketplace Rating:</p>
+                  <div className="flex flex-row items-center">
+                    <RatingStars 
+                      initialValue={4.5}
+                    />
                     <span className="ml-2 text-sm text-gray-500">({rating}/5)</span>
                   </div>
                 </div>
@@ -158,7 +144,7 @@ export default async function Dashboard() {
               <div className="mt-6">
                 <h3 className="ml-6 pt-8 pl-4 text-2xl font-medium font-semibold">Products/Services Bought:</h3>
                 {/* Haircut Service Divs: */}
-                <div className="ml-10 flex gap-4">
+                <div className="ml-10 flex gap-4">                  
                   <div className="w-full max-w-xs max-h-96 bg-cougRed rounded-lg shadow-lg overflow-hidden">
                     <img className="w-[320px] h-56 object-cover" src="https://d2zdpiztbgorvt.cloudfront.net/region1/us/528862/biz_photo/032d605d67174aed96978840bddc08-fabian-the-barber-biz-photo-f913e534e6d5488faadb2b583af984-booksy.jpeg?size=640x427" alt="Haircut" />
                     
@@ -169,21 +155,12 @@ export default async function Dashboard() {
                           src="https://d2zdpiztbgorvt.cloudfront.net/region1/us/528862/biz_photo/032d605d67174aed96978840bddc08-fabian-the-barber-biz-photo-f913e534e6d5488faadb2b583af984-booksy.jpeg?size=640x427"
                           className="w-12 h-12 rounded-full object-cover"
                         />
-                        <button className="bg-red-500 hover:bg-red-600 ml-4 text-white p-2 px-4">Rate Seller?</button>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="w-full max-w-xs max-h-96 bg-cougRed rounded-lg shadow-lg overflow-hidden">
-                    <img className="w-[320px] h-56 object-cover" src="https://d2zdpiztbgorvt.cloudfront.net/region1/us/528862/biz_photo/032d605d67174aed96978840bddc08-fabian-the-barber-biz-photo-f913e534e6d5488faadb2b583af984-booksy.jpeg?size=640x427" alt="Haircut" />
-                    
-                    <div className="p-4 text-black h-[132px]">
-                      <h3 className="text-lg font-semibold text-black">Haircut</h3>
-                      <div className="flex items-center mt-4">
-                        <img
-                          src="https://d2zdpiztbgorvt.cloudfront.net/region1/us/528862/biz_photo/032d605d67174aed96978840bddc08-fabian-the-barber-biz-photo-f913e534e6d5488faadb2b583af984-booksy.jpeg?size=640x427"
-                          className="w-12 h-12 rounded-full object-cover"
-                        />
-                        {/* <Rating value={rated} onChange={(value) => setRated(value)} /> */}
+                        <div className="ml-4">
+                          <p className="font-semibold">Rate the Seller?</p>
+                          <div className="flex items-center">
+                            <RatingStars initialValue={4.5} />
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>

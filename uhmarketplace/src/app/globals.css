@@ -30,3 +30,8 @@ body {
     text-wrap: balance;
   }
 }
+
+.star-svg {
+  display: inline-block;
+  vertical-align: middle;
+}
