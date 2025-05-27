@@ -1,7 +1,11 @@
+// "use client";
+
+// import { useState } from "react";
 import { useSession } from "next-auth/react";
 import { getServerSession } from "next-auth";
 import { prisma } from "../../../../prisma/prisma";
 import { options } from "@/app/api/auth/[...nextauth]/options";
+// import { Rating } from "@material-tailwind/react";
 
 import { Avatar, user } from "@nextui-org/react";
 import Link from "next/link";
@@ -149,6 +153,43 @@ export default async function Dashboard() {
               ) : (
                 <p>Please sign in to view your dashboard.</p>
               )}
+            </div>
+            <div className="rounded-lg h-128 bg-white mt-4">
+              <div className="mt-6">
+                <h3 className="ml-6 pt-8 pl-4 text-2xl font-medium font-semibold">Products/Services Bought:</h3>
+                {/* Haircut Service Divs: */}
+                <div className="ml-10 flex gap-4">
+                  <div className="w-full max-w-xs max-h-96 bg-cougRed rounded-lg shadow-lg overflow-hidden">
+                    <img className="w-[320px] h-56 object-cover" src="https://d2zdpiztbgorvt.cloudfront.net/region1/us/528862/biz_photo/032d605d67174aed96978840bddc08-fabian-the-barber-biz-photo-f913e534e6d5488faadb2b583af984-booksy.jpeg?size=640x427" alt="Haircut" />
+                    
+                    <div className="p-4 text-black h-[132px]">
+                      <h3 className="text-lg font-semibold text-black">Haircut</h3>
+                      <div className="flex items-center mt-4">
+                        <img
+                          src="https://d2zdpiztbgorvt.cloudfront.net/region1/us/528862/biz_photo/032d605d67174aed96978840bddc08-fabian-the-barber-biz-photo-f913e534e6d5488faadb2b583af984-booksy.jpeg?size=640x427"
+                          className="w-12 h-12 rounded-full object-cover"
+                        />
+                        <button className="bg-red-500 hover:bg-red-600 ml-4 text-white p-2 px-4">Rate Seller?</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="w-full max-w-xs max-h-96 bg-cougRed rounded-lg shadow-lg overflow-hidden">
+                    <img className="w-[320px] h-56 object-cover" src="https://d2zdpiztbgorvt.cloudfront.net/region1/us/528862/biz_photo/032d605d67174aed96978840bddc08-fabian-the-barber-biz-photo-f913e534e6d5488faadb2b583af984-booksy.jpeg?size=640x427" alt="Haircut" />
+                    
+                    <div className="p-4 text-black h-[132px]">
+                      <h3 className="text-lg font-semibold text-black">Haircut</h3>
+                      <div className="flex items-center mt-4">
+                        <img
+                          src="https://d2zdpiztbgorvt.cloudfront.net/region1/us/528862/biz_photo/032d605d67174aed96978840bddc08-fabian-the-barber-biz-photo-f913e534e6d5488faadb2b583af984-booksy.jpeg?size=640x427"
+                          className="w-12 h-12 rounded-full object-cover"
+                        />
+                        {/* <Rating value={rated} onChange={(value) => setRated(value)} /> */}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
             </div>
           </div>
         </div>
