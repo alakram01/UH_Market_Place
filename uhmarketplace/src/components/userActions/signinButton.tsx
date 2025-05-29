@@ -1,6 +1,8 @@
 "use client";
 
 import React from "react";
+import { useMsal } from "@azure/msal-react";
+import { useState } from "react";
 import { msalinstance } from "@/app/api/auth/msalinstance";
 import { loginRequest, graphConfig } from "@/app/api/auth/auth-config";
 import { signIn } from "next-auth/react";
@@ -9,34 +11,24 @@ import { signIn } from "next-auth/react";
 export const SignInButton = () => {
   const handleLogin = async () => {
 
-    try {
+     await msalinstance.initialize();
 
-      // Initializes the MSAL instance
-      await msalinstance.initialize();
+      const [anchorEl, setAnchorEl] = useState(null);
+      const open = Boolean(anchorEl);
 
-      // This will pop the signin page for the user to be able to sign in their UH MS account
-      const loginResponse = await msalinstance.loginPopup(loginRequest);
+      const handleLogin = (loginType: any) => {
+          setAnchorEl(null);
 
-      // retrieves the account from the login page
-      const account = loginResponse.account;
+        if (loginType === "popup") {
+            msalinstance.loginPopup(loginRequest).catch((e) =>{ console.error(`loginPopup failed: ${e}`) });
+        } else if (loginType === "redirect") {
+            msalinstance.loginRedirect(loginRequest).catch((e) => { console.error(`loginRedirect failed: ${e}`) })
+            msalinstance.loginRedirect(loginRequest).catch((e) => { console.error(`loginRedirect failed: ${e}`) })
+        };
+      }
+    }
 
-      // Acquires an access token for the signed in user,
-      // Used for also authenticated requests to Microsoft Graph API
-      const tokenResponse = await msalinstance.acquireTokenSilent({
-        ...loginRequest,
-        account,
-      });
-
-      // Makes a request to the microsoft Graph API (/me endpoint) to get the users profile
-      // Parses and stores the result in userProfile
-      const graphResponse = await fetch(graphConfig.graphMeEndpoint, {
-        headers: {
-          Authorization: `Bearer ${tokenResponse.accessToken}`,
-        },
-      });
-
-      const userProfile = await graphResponse.json();
-
+/*
       // Optionally save to DB yourself (redundant if using CredentialsProvider below)
       await fetch("/api/save-user", {
         method: "POST",
@@ -67,7 +59,7 @@ export const SignInButton = () => {
       alert("Login failed — see console for details.");
     }
   };
-
+*/
   return (
     <button
       onClick={handleLogin}
