@@ -1,5 +1,5 @@
-import { loginRequest, graphConfig } from "../authConfig";
-import { msalInstance } from "../../pages/_app";
+import { loginRequest, graphConfig } from "@/app/api/auth/auth-config";
+import { msalInstance } from "@/app/api/auth/msalinstance";
 
 export async function callMsGraph() {
     const account = msalInstance.getActiveAccount();

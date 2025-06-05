@@ -60,11 +60,15 @@ export const msalConfig = {
 // This defines the permission scopes you're requesting from Microsoft Graph during login
 // "User.Read" allows reading the signed-in user's basic profile info (name, email, etc.)
 export const loginRequest = {
-    scopes: ["User.Read"]
+    scopes: ["User.Read"],
+
 };
 
 // This is the Microsoft Graph API endpoint to fetch the currently signed-in user's profile
 // You will use this endpoint after acquiring a valid access token
+/*
 export const graphConfig = {
     graphMeEndpoint: "https://graph.microsoft.com/v1.0/me"
 };
+
+*/

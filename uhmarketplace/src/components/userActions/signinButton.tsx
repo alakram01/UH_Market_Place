@@ -2,31 +2,38 @@
 
 import React from "react";
 import { useMsal } from "@azure/msal-react";
-import { useState } from "react";
-import { msalinstance } from "@/app/api/auth/msalinstance";
-import { loginRequest, graphConfig } from "@/app/api/auth/auth-config";
-import { signIn } from "next-auth/react";
+//import { useState } from "react";
+//import { msalinstance } from "@/app/api/auth/msalinstance";
+import { loginRequest } from "@/app/api/auth/auth-config";
+//import { signIn } from "next-auth/react";
 
 // Defines a componenent that renders a button, and a handlelogin function for the onClick event
 export const SignInButton = () => {
+
+  // This line uses the MSAL isntance to get the PublicClientApplication
+  const { instance } = useMsal();
+
+  // Returns the current signed-in User (if any)
+  const activeAccount = instance.getActiveAccount();
+
+  // Calls loginRedirect() on the MSAL instance
   const handleLogin = async () => {
 
-     await msalinstance.initialize();
-
-      const [anchorEl, setAnchorEl] = useState(null);
-      const open = Boolean(anchorEl);
-
-      const handleLogin = (loginType: any) => {
-          setAnchorEl(null);
-
-        if (loginType === "popup") {
-            msalinstance.loginPopup(loginRequest).catch((e) =>{ console.error(`loginPopup failed: ${e}`) });
-        } else if (loginType === "redirect") {
-            msalinstance.loginRedirect(loginRequest).catch((e) => { console.error(`loginRedirect failed: ${e}`) })
-            msalinstance.loginRedirect(loginRequest).catch((e) => { console.error(`loginRedirect failed: ${e}`) })
-        };
-      }
+    instance
+      .loginRedirect({
+        ...loginRequest,    // Spreads in your configured scopes from auth-config.ts 
+        //redirectUri: '/marketplace',
+      })
+      .catch((error) => console.log(error));    // logs any errors
     }
+
+  // Handles logout request
+  const handleLogoutRedirect = () => {
+    instance.logoutPopup({
+      postLogoutRedirectUri: '/',
+    });
+    window.location.reload();
+  };
 
 /*
       // Optionally save to DB yourself (redundant if using CredentialsProvider below)
@@ -60,21 +67,24 @@ export const SignInButton = () => {
     }
   };
 */
-  return (
-    <button
-      onClick={handleLogin}
-      className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-    >
-      Sign In with Microsoft
-    </button>
-  );
-};
+ return (
+    <>
+      <div>
+        
+      {activeAccount ? (
+        <button onClick={handleLogoutRedirect}>Logout</button>
+
+      ) : (
+        <button onClick={handleLogin}>Login</button>
+      )}
+      </div>
+    </>
+  )
+}
 
 /**
- * 1. Open MS login popup
- * 2. Acquire access token for the user
- * 3. Fetch user profile from Microsoft Graph
- * 4. Optionally save profile to your DB
- * 5. Use NextAuth credentials provider to establish a session
- * 6. Alert user if login succeeded or failed
+ * 1. Access the current MSAL instance
+ * 2. Check if the user is signed in (getActiveAccount)
+ * 3. Run loginRedirect() to initiate login
+ * 4. Run logoutPopup to sign out the user
  */

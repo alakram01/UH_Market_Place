@@ -7,6 +7,7 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/options"; // ✅ added
 import { AuthProvider } from "./api/auth/hooks/auth-provider";
 import { getUserProfilePic } from "@/lib/getUserProfilePic";
 
+
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -48,3 +49,11 @@ export default async function RootLayout({
     </html>
   );
 }
+
+/**
+ * Wrapping your entire app in the AuthProvider
+ * Showing the header with user session + profile picture
+ * Rendering all pages (children) and any modal routes (modal)
+ * Fetching the current session with getServerSession(authOptions)
+ * ------------
+ */

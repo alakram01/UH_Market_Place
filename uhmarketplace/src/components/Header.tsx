@@ -55,10 +55,10 @@ const Header = (props: props) => {
             </a>
           ) : (
             <a
-              href="/signup"
+              href="/login"
               className="border border-transparent px-6 py-3 text-white hover:border-white transition-all duration-200 rounded-full lg:text-2xl text-md md:text-lg"
             >
-              Sign Up
+              Sign In
             </a>
           )}
           <a href="/studycheck"

@@ -10,3 +10,7 @@ import { msalConfig } from "./auth-config";
 export const msalinstance = new PublicClientApplication(msalConfig);
 
 
+/**
+ * This Is gonna be under construction
+ */
+
