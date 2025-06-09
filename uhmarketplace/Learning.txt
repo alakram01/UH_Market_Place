@@ -67,3 +67,13 @@ if it matches, if one isnt matching then it will adjust accordingly
 When it comes to deleting, it will delete from the database but it will archive in the stripe dashboard.
 
 Text Isreal about the frontend since the website is lacking front end, just have him do the home page since it will be the easiest
+
+--------------------------------
+
+What is Hydration
+
+When using Next.js hyrdation is the process wehre the client side Teact application teakes over the server rendering HTMK and attaches events handlers,state, etc,
+so the page becomes interactive
+
+If the HTML on th server is different from what React expects on the client, you get this warning.
+
