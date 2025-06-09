@@ -29,7 +29,7 @@ export const SignInButton = () => {
 
   // Handles logout request
   const handleLogoutRedirect = () => {
-    instance.logoutPopup({
+    instance.logoutRedirect({
       postLogoutRedirectUri: '/',
     });
     window.location.reload();

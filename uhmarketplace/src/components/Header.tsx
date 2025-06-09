@@ -4,7 +4,6 @@ import uhLogo from "./images/uh_white_logo.png";
 import { Session } from "next-auth";
 import Link from "next/link";
 import { Avatar } from "@nextui-org/react";
-import { prisma } from "../../prisma/prisma";
 
 type props = {
   session: Session | null;
