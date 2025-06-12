@@ -1,4 +1,3 @@
-// file: src/app/api/auth/hooks/auth-provider.tsx
 "use client";
 
 import {

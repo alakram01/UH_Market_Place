@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/Header";
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/app/api/auth/[...nextauth]/options"; // ✅ added
+import { authOptions } from "@/app/api/auth/[...nextauth]/option"; // ✅ added
 import { AuthProvider } from "./api/auth/hooks/auth-provider";
 import { getUserProfilePic } from "@/lib/getUserProfilePic";
 

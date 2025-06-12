@@ -1,7 +1,7 @@
 import { useSession } from "next-auth/react";
 import { getServerSession } from "next-auth";
 import { prisma } from "../../../../prisma/prisma";
-import { authOptions } from "@/app/api/auth/[...nextauth]/options";
+import { authOptions } from "@/app/api/auth/[...nextauth]/option";
 
 import { Avatar, user } from "@nextui-org/react";
 import Link from "next/link";

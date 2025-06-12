@@ -4,7 +4,7 @@ import AnimatedFeatureBoxes from "../components/AnimatedFeatureBoxes";
 import FadeInGrid from "@/components/FadeInGrid";
 import { motion } from "framer-motion";
 import ScrollFadeIn from "@/components/ScrollFadeIn";
-import { authOptions } from "./api/auth/[...nextauth]/options";
+import { authOptions } from "./api/auth/[...nextauth]/option";
 import { getServerSession } from "next-auth/next";
 import UserCard from "../components/UserCard";
 import ImageCarousel from "../components/Slider";

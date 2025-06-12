@@ -1,18 +1,37 @@
+"use client"
+
 import React from "react";
 import Image from "next/image";
 import uhLogo from "./images/uh_white_logo.png";
 import { Session } from "next-auth";
 import Link from "next/link";
 import { Avatar } from "@nextui-org/react";
+import { useMsal } from "@azure/msal-react";
+import { useEffect, useState } from "react";
+import { AccountInfo } from "@azure/msal-browser";
 
-type props = {
-  session: Session | null;
+type Props = {
   profilePicUrl?: string | null;
+  session: Session | null;
 };
 
 
-const Header = (props: props) => {
-  const { session, profilePicUrl } = props;
+const Header = (props: Props) => {
+  const { profilePicUrl } = props;
+  const { instance } = useMsal();  // ✅ moved inside component
+  const [activeAccount, setActiveAccount] = useState<AccountInfo | null>(null);
+
+  useEffect(() => {
+    const account = instance.getActiveAccount();
+    setActiveAccount(account);
+
+    if (account) {
+      console.log("=== User Info ===");
+      console.log("Name:", account.name);
+      console.log("Username:", account.username);
+      console.log("Home Account ID:", account.homeAccountId);
+    }
+  }, [instance]);
 
   return (
     <header
@@ -45,9 +64,9 @@ const Header = (props: props) => {
         
 
         <nav className="flex gap-2 pr-4">
-          {session ? (
+          {activeAccount ? (
             <a
-              href="/api/auth/signout"
+              href="/login"
               className="border border-transparent px-6 py-3 text-white hover:border-white transition-all duration-200 rounded-full lg:text-2xl text-lg"
             >
               Sign Out
@@ -74,7 +93,7 @@ const Header = (props: props) => {
           >
             Marketplace
           </a>
-          {session ? (
+          {activeAccount ? (
             <Link 
             href={'/dashboard'}
             className="self-center"

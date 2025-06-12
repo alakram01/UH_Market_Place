@@ -66,9 +66,9 @@ export const loginRequest = {
 
 // This is the Microsoft Graph API endpoint to fetch the currently signed-in user's profile
 // You will use this endpoint after acquiring a valid access token
-/*
+
 export const graphConfig = {
     graphMeEndpoint: "https://graph.microsoft.com/v1.0/me"
 };
 
-*/
+
