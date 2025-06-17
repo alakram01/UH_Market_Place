@@ -1,3 +1,5 @@
+"use client"
+
 import React from "react";
 import Image from "next/image";
 import uhLogo from "./images/uh_white_logo.png";
@@ -6,24 +8,34 @@ import Link from "next/link";
 import { Avatar } from "@nextui-org/react";
 import { prisma } from "../../prisma/prisma";
 import DropDownMenu from "./DropDownMenu";
+import { useMsal } from "@azure/msal-react";
+import { useEffect, useState } from "react";
+import { AccountInfo } from "@azure/msal-browser";
 
 type Props = {
+  profilePicUrl?: string | null;
   session: Session | null;
 };
 
-const Header = async (props: Props) => {
-  let profileImage;
 
-  if (props.session) {
-    profileImage = await prisma.user.findUnique({
-      where: {
-        email: props.session?.user?.email as string,
-      },
-      select: {
-        profilePicUrl: true,
-      },
-    });
-  }
+
+
+const Header = (props: Props) => {
+  const { profilePicUrl } = props;
+  const { instance } = useMsal();  // ✅ moved inside component
+  const [activeAccount, setActiveAccount] = useState<AccountInfo | null>(null);
+
+  useEffect(() => {
+    const account = instance.getActiveAccount();
+    setActiveAccount(account);
+
+    if (account) {
+      console.log("=== User Info ===");
+      console.log("Name:", account.name);
+      console.log("Username:", account.username);
+      console.log("Home Account ID:", account.homeAccountId);
+    }
+  }, [instance]);
 
   return (
     <header style={{ backgroundColor: "#C8102E" }} className="text-white sticky top-0 w-full z-50">
@@ -53,26 +65,45 @@ const Header = async (props: Props) => {
           </div>
         </div>
 
-        <nav className="flex gap-6 pr-4">
-          {props.session ? (
+        <nav className="flex gap-2 pr-4">
+          {activeAccount ? (
             <a
-              href="/api/auth/signout"
+              href="/login"
               className="border border-transparent px-6 py-3 text-white hover:border-white transition-all duration-200 rounded-full lg:text-2xl text-lg"
             >
               Sign Out
             </a>
           ) : (
             <a
-              href="/signup"
+              href="/login"
               className="border border-transparent px-6 py-3 text-white hover:border-white transition-all duration-200 rounded-full lg:text-2xl text-md md:text-lg"
             >
-              Sign Up
+              Sign In
             </a>
           )}
-
-          {props.session && (
-            <Link href={"/dashboard"} className="self-center">
-              <Avatar src={profileImage?.profilePicUrl || "/default-avatar.png"} alt="User Avatar" />
+          <a href="/studycheck"
+          className="border border-transparent px-6 py-3 text-white hover:border-white transition-all duration-200 rounded-full lg:text-2xl text-md md:text-lg">
+            Study Check-Ins
+          </a>
+          <a href="/tutorhub"
+          className="border border-transparent px-6 py-3 text-white hover:border-white transition-all duration-200 rounded-full lg:text-2xl text-md md:text-lg">
+            Tutoring
+          </a>
+          <a
+            href="/marketplace"
+            className="border border-transparent px-6 py-3 text-white hover:border-white transition-all duration-200 rounded-full lg:text-2xl text-md md:text-lg"
+          >
+            Marketplace
+          </a>
+          {activeAccount && (
+            <Link 
+            href={'/dashboard'}
+            className="self-center"
+            >
+                <Avatar
+                  src={profilePicUrl || "/default-avatar.png"}
+                  alt="User Avatar"
+                />
             </Link>
           )}
         </nav>
@@ -80,5 +111,7 @@ const Header = async (props: Props) => {
     </header>
   );
 };
+
+
 
 export default Header;

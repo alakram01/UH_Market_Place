@@ -4,7 +4,7 @@ import AnimatedFeatureBoxes from "../components/AnimatedFeatureBoxes";
 import FadeInGrid from "@/components/FadeInGrid";
 import { motion } from "framer-motion";
 import ScrollFadeIn from "@/components/ScrollFadeIn";
-import { options } from "./api/auth/[...nextauth]/options";
+import { authOptions } from "./api/auth/[...nextauth]/option";
 import { getServerSession } from "next-auth/next";
 import UserCard from "../components/UserCard";
 import ImageCarousel from "../components/Slider";
@@ -30,7 +30,7 @@ export default async function Home() {
     show: { opacity: 1, y: 0 },
   };
 
-  const session = await getServerSession(options);
+  const session = await getServerSession(authOptions);
   console.log(session);
   const images = [
     "/landing-images/step1.png",
@@ -82,7 +82,7 @@ export default async function Home() {
                 </ScrollFadeIn>
               </div>
             </div>
-            <hr className="z-20 text-center border-gray-400 border-t-2 border-gray-300"/>
+            <hr className="z-20 text-center border-gray-400 border-t-2"/>
             <div className="grid grid-cols-12 gap-2">
               <div className="col-span-5 p-4 rounded flex items-center justify-center">
                 <img
@@ -101,7 +101,7 @@ export default async function Home() {
             <a 
                 href="/marketplace"
                 rel="noopener noreferrer"
-                className="group flex justify-center items-center mt-[10px] w-full text-white py-3 font-bold bg-red-600 hover:bg-red-700 text-center block rounded-lg transition-all"
+                className="group flex justify-center items-center mt-[10px] w-full text-white py-3 font-bold bg-red-600 hover:bg-red-700 text-center rounded-lg transition-all"
             >
                 Marketplace!
                 <img 
@@ -168,7 +168,7 @@ export default async function Home() {
             <a 
                 href="/tutorhub"
                 rel="noopener noreferrer"
-                className="group flex justify-center items-center mt-[10px] w-full text-white py-3 font-bold bg-red-600 hover:bg-red-700 text-center block rounded-lg transition-all"
+                className="group flex justify-center items-center mt-[10px] w-full text-white py-3 font-bold bg-red-600 hover:bg-red-700 text-center rounded-lg transition-all"
             >
                 Daily Check-In
                 <img 
@@ -234,7 +234,7 @@ export default async function Home() {
                   <a 
                       href="/tutorhub"
                       rel="noopener noreferrer"
-                      className="group flex justify-center items-center mt-[10px] w-full text-white py-3 font-bold bg-red-600 hover:bg-red-700 text-center block rounded-lg transition-all"
+                      className="group flex justify-center items-center mt-[10px] w-full text-white py-3 font-bold bg-red-600 hover:bg-red-700 text-center rounded-lg transition-all"
                   >
                       Schedule Now!
                       <img 
@@ -269,7 +269,7 @@ export default async function Home() {
               href="https://uh.edu/nsm/students/student-organizations/"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex justify-center items-center mt-[10px] w-full text-white py-3 font-bold bg-red-600 hover:bg-red-700 text-center block rounded-lg transition-all"
+              className="group flex justify-center items-center mt-[10px] w-full text-white py-3 font-bold bg-red-600 hover:bg-red-700 text-center rounded-lg transition-all"
             >
               Find your club!
               <img 

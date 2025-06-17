@@ -1,0 +1,39 @@
+interface AuthProviderProps {
+    children: ReactNode;
+}
+
+export const AuthProvider = ({ children }: AuthProviderProps) => {
+    // If no active account is set but there are accounts in cache, set the first one as active
+    if (!msalinstance.getActiveAccount() && msalinstance.getAllAccounts().length > 0) {
+        msalinstance.setActiveAccount(msalinstance.getAllAccounts()[0]);
+    }
+
+    // Enable listening for auth changes across tabs/windows
+    msalinstance.enableAccountStorageEvents();
+
+    useEffect(() => {
+        // Add an event callback to MSAL to handle login events
+        const callbackId = msalinstance.addEventCallback((event) => {
+            const authResult = event?.payload as AuthenticationResult;
+
+            if (event.eventType === EventType.LOGIN_SUCCESS && authResult?.account) {
+                // Set the logged-in account as the active account
+                msalinstance.setActiveAccount(authResult.account);
+
+                // Reload the app to refresh state/UI after login
+                window.location.reload();
+
+                // Alternative: Use router.refresh() if using Next.js router
+            }
+        });
+
+
+        --> What is an interface and how is it used?
+        --> what is a children in react?
+        --> what does getActiveAccount() mean?
+        --> What does enableAccountStorageEvents(); mean?
+        --> what is the event and esp event.paylod as AuthencticatedResult();
+        --> what does removeEventCallback(callbackId) do?
+        --> eturn <MsalProvider instance={msalinstance}>{children}</MsalProvider>;
+
+        

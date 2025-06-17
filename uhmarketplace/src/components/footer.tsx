@@ -65,7 +65,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom Section */}
-        <div className="mt-8 border-t border-gray-700 pt-4 text-center text-sm pt-8">
+        <div className="mt-8 border-t border-gray-700 pt-4 text-center text-sm">
           <p>&copy; {new Date().getFullYear()} CoogBay. All rights reserved.</p>
         </div>
       </div>

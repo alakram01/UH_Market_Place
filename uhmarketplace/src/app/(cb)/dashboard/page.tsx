@@ -4,7 +4,6 @@
 import { useSession } from "next-auth/react";
 import { getServerSession } from "next-auth";
 import { prisma } from "../../../../prisma/prisma";
-import { options } from "@/app/api/auth/[...nextauth]/options";
 import RatingStars from '@/components/RatingStars'
 
 import { Avatar, user } from "@nextui-org/react";
@@ -14,11 +13,12 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import UserPosts from "@/components/userActions/UserPosts";
 import React from "react";
+import { authOptions } from "@/app/api/auth/[...nextauth]/option";
 
 // https://next-auth.js.org/getting-started/client
 // Test the middleware by navigating to the /dashboard route
 export default async function Dashboard() {
-  const session = await getServerSession(options);
+  const session = await getServerSession(authOptions);
   const profileImage = await prisma.user.findUnique({
     where: {
       email: session?.user?.email as string,
@@ -122,7 +122,7 @@ export default async function Dashboard() {
             <div className="rounded-lg h-96 bg-white mt-4">
               {session ? (
                 <div className="mt-6">
-                  <h3 className="ml-6 pt-8 pl-4 text-2xl font-medium font-semibold">Your Listings:</h3>
+                  <h3 className="ml-6 pt-8 pl-4 text-2xl font-medium">Your Listings:</h3>
                   {/* <ul className="mt-2"> */}
                   <div className="overflow-y-auto max-h-96">
                   {userPosts.length > 0 ? (
@@ -140,7 +140,7 @@ export default async function Dashboard() {
             </div>
             <div className="rounded-lg h-[450px] bg-white mt-4">
               <div className="mt-6">
-                <h3 className="ml-6 mb-2 pt-8 pl-4 text-2xl font-medium font-semibold">Products/Services Bought:</h3>
+                <h3 className="ml-6 mb-2 pt-8 pl-4 text-2xl font-semibold">Products/Services Bought:</h3>
                 {/* Haircut Service Divs: */}
                 <div className="ml-10 flex gap-4">                  
                   <div className="w-full max-w-xs max-h-96 bg-cougRed rounded-lg shadow-lg overflow-hidden">
