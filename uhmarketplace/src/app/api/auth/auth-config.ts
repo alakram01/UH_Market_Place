@@ -11,7 +11,7 @@ export const msalConfig = {
         authority: `https://login.microsoftonline.com/${process.env.NEXT_PUBLIC_AZURE_AD_TENANT_ID}`,
 
         // Where to redirect users after login
-        redirectUri: "http://localhost:3000/",
+        redirectUri: "http://localhost:3000/dashboard",
 
         // Where to redirect users after they log out
         postLogoutRedirectUri: '/',
